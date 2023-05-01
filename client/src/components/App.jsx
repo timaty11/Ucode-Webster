@@ -17,7 +17,8 @@ const App = () => {
       {/* <UserContext.Provider value={{currentUser: userInfo?.values || 'guest'}}> */}
         <BrowserRouter>
           {/* <Header /> */}
-          <main className="flex-[1_0_auto] dark:bg-gray-900">
+          {/* <main className="flex-[1_0_auto] dark:bg-gray-900"> */}
+          <main className="min-h-screen dark:bg-gray-900">
             <Routes>
               <Route path='/' element={ <MainPage /> } />
             </Routes>
