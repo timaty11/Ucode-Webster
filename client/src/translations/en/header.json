@@ -1,0 +1,16 @@
+{
+    "navButtons" : {
+        "mainPage" : "Home",
+        "partnerRegister" : "Partnership",
+        "about" : "About us",
+        "contact" : "Contact"
+    },
+    "userDropdownMenu" : {
+        "welcome" : "Hi, ",
+        "unauthorizedUser" : "Guest",
+        "authorizeSuggestion" : "Want to buy some tickets?",
+        "profile" : "Profile",
+        "eventCreate" : "Manage events",
+        "logout" : "Logout"
+    }
+}

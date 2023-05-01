@@ -1,0 +1,15 @@
+{
+    "head" : {
+        "zamanyxa" : "Poster for events in Ukraine, 2023"
+    },
+    "sidebar" : {
+        "filter" : "Filters",
+        "searchInput" : "Search",
+        "searchButton" : "Find"
+    },
+    "eventCard" : {
+        "buy" : "Buy ticket",
+        "from" : "from",
+        "": ""
+    }
+}

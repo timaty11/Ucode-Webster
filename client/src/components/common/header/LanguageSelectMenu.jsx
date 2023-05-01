@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Transition } from '@headlessui/react';
+// import { Menu, Transition } from '@headlessui/react';
 import { useTranslation } from 'react-i18next';
 
 import LanguageSelectElement from "./LanguageSelectElement.jsx";

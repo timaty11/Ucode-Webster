@@ -1,0 +1,14 @@
+{
+    "head" : {
+        "zamanyxa" : "Афиша на мероприятния в Украине, 2023"
+    },
+    "sidebar" : {
+        "filter" : "Фильтры",
+        "searchInput" : "Поиск",
+        "searchButton" : "Найти"
+    },
+    "eventCard" : {
+        "buy" : "Купить",
+        "from" : "с"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "eventDetails" : {
+        "ticketsLeft" : "Осталось билетов: ",
+        "subscribe" : "Добавить в избранное",
+        "addToCart" : "В корзину"
+    },
+    "button-ckeckout" : {
+        "name": "Купить сейчас"
+    },
+    "recommendations" : {
+        "recommend" : "Рекоммендации",
+        "from" : "с"
+    },
+    "comments" : {
+        "unauthorizedUser" : "Вы должны быть залогинены чтобы оставлять комментарии!",
+        "addComment" : "Оставить комментарий",
+        "addCommentDescription" : "Содержимое комментария",
+        "submit" : "Отправить",
+        "minCharachters" : "Введите минимум 5 символов"
+    }
+}

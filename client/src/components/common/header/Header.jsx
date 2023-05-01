@@ -17,18 +17,18 @@ const lngs = {
 };
 
 const Header = () => {
-  const [ t, i18n ] = useTranslation('header');
+  // const [ t, i18n ] = useTranslation('header');
 
   return (
     <header className="pb-10">
       <nav className="fixed z-50 w-full bg-blue-600 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-dark-bg-800">
         <div className="flex flex-wrap justify-between items-center w-full mx-auto container">
           <Logo />
-          <Navbar />
+          {/* <Navbar /> */}
           
           <div className="flex lg:order-1 items-center justify-end w-[10%] ">
-            <LanguageSelectMenu />
-            <UserDropdownMenu />
+            {/* <LanguageSelectMenu /> */}
+            {/* <UserDropdownMenu /> */}
 
             <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-dark-text-400 dark:hover:bg-dark-bg-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
               <span className="sr-only">Open main menu</span>

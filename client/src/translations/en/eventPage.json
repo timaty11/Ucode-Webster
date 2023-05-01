@@ -1,0 +1,21 @@
+{
+    "eventDetails" : {
+        "ticketsLeft" : "Tickets left: ",
+        "subscribe" : "Add to favorites",
+        "addToCart" : "Add to cart"
+    },
+    "button-ckeckout" : {
+        "name": "Buy now"
+    },
+    "recommendations" : {
+        "recommend" : "Featured events",
+        "from" : "from"
+    },
+    "comments" : {
+        "unauthorizedUser" : "You must be logged in to leave comments!",
+        "addComment" : "Add comment",
+        "addCommentDescription" : "Write your comment here",
+        "submit" : "Submit comment",
+        "minCharachters" : "Enter at least 5 characters"
+    }
+}

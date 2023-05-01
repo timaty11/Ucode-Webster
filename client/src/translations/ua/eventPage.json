@@ -1,0 +1,21 @@
+{
+    "eventDetails" : {
+        "ticketsLeft" : "Залишилось квитків: ",
+        "subscribe" : "Добавити до обраних",
+        "addToCart" : "В корзину"
+    },
+    "button-ckeckout" : {
+        "name": "Купити зараз"
+    },
+    "recommendations" : {
+        "recommend" : "Рекомендації",
+        "from" : "з"
+    },
+    "comments" : {
+        "unauthorizedUser" : "Ви повинні бути залогінені для залишення коментарів!",
+        "addComment" : "Залишити коментар",
+        "addCommentDescription" : "Ваш коментар",
+        "submit" : "Відправити",
+        "minCharachters" : "Введіть мінімум 5 символів"
+    }
+}

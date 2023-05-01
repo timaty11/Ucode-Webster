@@ -1,6 +1,6 @@
 import React from "react";
 
-import '../../flags/css/flag-icon.min.css'; 
+// import '../../flags/css/flag-icon.min.css'; 
 
 
 const LanguageSelectElement = ({ i18n, lng }) => {

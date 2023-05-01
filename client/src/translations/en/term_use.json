@@ -1,0 +1,55 @@
+{
+    "step1": {
+        "title": "Partnership terms of use",
+        "text": "Frequently asked questions about how our business works and what we can do for you.",
+        "button-read": "I read",
+        "button-complete": "Read",
+        "info1": {
+            "text1": {
+                "head": "Why should you choose us?",
+                "body": "1. Quality of services. Our service always provides high-quality services from trusted sources.\nConvenience of use. Our service offers a convenient and intuitive interface, as well as easy navigation and guaranteed ease of use.\n Price. Our service offers affordable prices and provides opportunities to receive discount coupons for various events.\nQuality of support. Our support operators work 24/7 and are always ready to help even in the most difficult situations."
+            },
+            "text2": {
+                "head": "How to buy a ticket?",
+                "body": "After registration, you will have access to several sections on this page with forms. You just need to fill them out, after which we will notify you of a successful purchase!"
+            },
+            "text3": {
+                "head": "What to do in case of event cancellation?",
+                "body": "In case of event cancellation, we will automatically refund the payment to the payment method you previously specified. If there are any problems with this, our operator will contact you."
+            }
+        },
+        "info2": {
+            "text1": {
+                "head": "How to return a ticket?",
+                "body": "You can return a ticket through your personal account or through our support service!"
+            },
+            "text2": {
+                "head": "What payment methods are available?",
+                "body": "Our service accepts all possible payment methods, including Visa and Mastercard!"
+            },
+            "text3": {
+                "head": "How to annoy the admin?",
+                "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus minus, veritatis, voluptatem ex fugit unde rem quasi doloribus consectetur ducimus quis molestias esse cum nemo eveniet maxime, debitis voluptatum nam!"
+            }
+        }
+    },
+    "step2": {
+        "title": "Partner association",
+        "text": "Let's get everything set up so you can verify your personal account and start setting up your profile.",
+        "placeholder": "Your secret key",
+        "button": "Verify account"
+    },
+    "step3": {
+        "title": "Add information to a partner account",
+        "button": "Сonfirm",
+        "button-load": "Loadin...",
+        "filds": {
+            "name": "Organization name",
+            "email": "Organization email",
+            "phone": "Organization phone",
+            "address": "Address",
+            "website": "Organization website",
+            "description": "description"
+        }
+    }
+}

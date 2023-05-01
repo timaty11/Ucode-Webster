@@ -1,0 +1,11 @@
+{
+    "values" : {
+        "id" : "temp_user_id",
+        "login" : "login", 
+        "email" : "email@email.com",
+        "first_name" : "dayn",
+        "second_name" : "kokonovich",
+        "last_name" : "prasakov",
+        "phone_number" : "+1234567890"
+    }
+}

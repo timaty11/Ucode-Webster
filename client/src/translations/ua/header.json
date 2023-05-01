@@ -1,0 +1,16 @@
+{
+    "navButtons" : {
+        "mainPage" : "На головну",
+        "partnerRegister" : "Організаторам",
+        "about" : "Про нас",
+        "contact" : "Контакти"
+    },
+    "userDropdownMenu" : {
+        "welcome" : "Хай, ",
+        "unauthorizedUser" : "Гість",
+        "authorizeSuggestion" : "Хочете придбати квитки?",
+        "profile" : "Профіль",
+        "eventCreate" : "Панель управління",
+        "logout" : "Вийти"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "head" : {
+        "zamanyxa" : "Афіша і квитки на концерти у Києві, 2023"
+    },
+    "sidebar" : {
+        "filter" : "Фільтри",
+        "searchInput" : "Пошук",
+        "searchButton" : "Знайти"
+    },
+    "eventCard" : {
+        "buy" : "Придбати",
+        "from" : "з"
+    }
+}

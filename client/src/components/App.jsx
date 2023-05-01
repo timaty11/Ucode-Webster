@@ -3,6 +3,7 @@ import i18next from 'i18next';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import Header from './common/header/Header.jsx';
 
 // Common
 import MainPage from './common/main-page/MainPage.jsx';
@@ -16,7 +17,7 @@ const App = () => {
     <I18nextProvider i18n={i18next}>
       {/* <UserContext.Provider value={{currentUser: userInfo?.values || 'guest'}}> */}
         <BrowserRouter>
-          {/* <Header /> */}
+          <Header />
           <main className="flex-[1_0_auto] dark:bg-gray-900">
             <Routes>
               <Route path='/' element={ <MainPage /> } />
