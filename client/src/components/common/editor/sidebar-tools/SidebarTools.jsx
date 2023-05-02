@@ -13,7 +13,7 @@ export function SidebarTools(props) {
     return (
         <div className="sidebar-tools bg-slate-800 h-full">
             <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'></link>
-            <ul style={{ color: "#c8c8c8" }} className="ms-5 text-xl">
+            <ul style={{ color: "#c8c8c8" }} className="text-xl">
                 <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={e => handleOption(1)}>
                     <i className='bx bx-cut'></i>
                     <p >Crop</p>
@@ -22,11 +22,11 @@ export function SidebarTools(props) {
                     <i className='bx bxs-brightness-half'></i>
                     <p>Brightness</p>
                 </li>
-                <li className="flex gap-4 items-center p-5 cursor-pointer">
+                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={e => handleOption(3)}>
                     <i className='bx bxs-color-fill'></i>
                     <p>Effects</p>
                 </li>
-                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={e => handleOption(4)}>
+                <li className="flex gap-4 items-center p-5 cursor-pointer" >
                     <i className='bx bxs-brush' ></i>
                     <p>Brush</p>
                 </li>
@@ -43,7 +43,6 @@ export function SidebarTools(props) {
                     <p>Download</p>
                 </li>
             </ul>
-           
         </div>
     )
 }

@@ -10,7 +10,7 @@ const aspectRatios = [
     { value: 1 / 2, text: "1/2" }
 ]
 
-export function ImageCropDialog({ id, imageUrl, zoomInit, cropInit, aspectInit, onCancel, setCroppedImageFor, resetImage }) {
+export function ImageCropDialog({ imageUrl, zoomInit, cropInit, aspectInit, onCancel, setCroppedImageFor, resetImage }) {
     if (zoomInit == null) {
         zoomInit = 1;
     }
