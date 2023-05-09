@@ -6,7 +6,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { ImageCropDialog } from "./tools/ImageCropDialog";
 import { ImageEffects } from "./tools/ImageEffects";
-import { ImageEffectsOptions } from "./tools/tools-options/ImageEffectsOptions";
+import { ImageEffectsOptions } from "./tools/tools-options/effects/ImageEffectsOptions";
+import { ImageDrawing } from "./tools/ImageDrawing";
 
 export function Editor() {
     const [file, setFile] = useState(null);
@@ -96,7 +97,7 @@ export function Editor() {
                         />
                 : null}
                 {/* <Canvas className="hidden" /> */}
-                <canvas className="absolute opacity-0" id="image_canvas"></canvas>
+                <canvas className="absolute opacity-0 hidden" id="image_canvas"></canvas>
 
                 {!option ?
                     <ImageHolder
@@ -123,8 +124,16 @@ export function Editor() {
                             imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
                             filter={filter}
                             setCroppedImageFor={setEditedImageFor}
+                            onCancel={onCancel}
                         />
                     </div>
+                : null}
+                {option === 4 && file ?
+                    <ImageDrawing 
+                        imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                        setCroppedImageFor={setEditedImageFor}
+                        onCancel={onCancel}
+                    />
                 : null}
             </div>
         </div>

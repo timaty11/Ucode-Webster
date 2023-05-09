@@ -26,9 +26,9 @@ export function SidebarTools(props) {
                     <i className='bx bxs-color-fill'></i>
                     <p>Effects</p>
                 </li>
-                <li className="flex gap-4 items-center p-5 cursor-pointer" >
-                    <i className='bx bxs-brush' ></i>
-                    <p>Brush</p>
+                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={e => handleOption(4)}>
+                    <i className='bx bxs-paint'></i>
+                    <p>Paint</p>
                 </li>
                 <li className="flex gap-4 items-center p-5 cursor-pointer">
                     <i className='bx bxs-magic-wand' ></i>

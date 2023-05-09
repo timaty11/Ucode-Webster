@@ -89,7 +89,7 @@ export function ImageCropDialog({ imageUrl, zoomInit, cropInit, aspectInit, onCa
                     ))}
                 </select>
                 <div className="button-area" style={{ color: "#c8c8c8" }}>
-                    <button className="p-5 border-solid border-2 border-slate-400 mr-5" onClick={onCancel}>Cancel</button>
+                    <button className="p-5 border-solid border-2 border-slate-400 mr-5" onClick={() => onCancel()}>Cancel</button>
                     <button className="p-5 border-solid border-2 border-slate-400 mr-5" onClick={onResetImage}>Reset</button>
                     <button className="p-5 border-solid border-2 border-slate-400" onClick={onCrop}>Crop</button>
                 </div>
