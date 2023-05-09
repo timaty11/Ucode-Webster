@@ -10,21 +10,15 @@ import clientRoutes from '../../../routes/client/clientRoutes.js';
 import '../../css/header.css';
 
 
-const lngs = {
-  en: { nativeName: 'en' },
-  ru: { nativeName: 'ru' },
-  ua: { nativeName: 'ua' },
-};
-
 const Header = () => {
-  // const [ t, i18n ] = useTranslation('header');
+  const [ t, i18n ] = useTranslation();
 
   return (
     <header className="pb-10">
       <nav className="fixed z-50 w-full bg-blue-600 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-dark-bg-800">
         <div className="flex flex-wrap justify-between items-center w-full mx-auto container">
           <Logo />
-          {/* <Navbar /> */}
+          <Navbar />
           
           <div className="flex lg:order-1 items-center justify-end w-[10%] ">
             {/* <LanguageSelectMenu /> */}

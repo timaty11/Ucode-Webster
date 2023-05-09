@@ -9,6 +9,8 @@ import Header from './common/header/Header.jsx';
 import MainPage from './common/main-page/MainPage.jsx';
 import Footer from './common/footer/Footer.jsx';
 
+import UserContext from '../context/UserContext.js';
+
 
 const App = () => {
   const token = localStorage.getItem('token');

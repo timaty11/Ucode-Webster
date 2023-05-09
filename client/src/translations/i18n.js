@@ -32,42 +32,38 @@ import term_use_ru from './ru/term_use.json'
 import term_use_ua from './ua/term_use.json'
 
 
-
-i18n
-  .use(Backend)
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    interpolation: { escapeValue: false },
-    // lng: 'en',
-    resources: {
-      en: {
-        header: header_en,
-        footer: footer_en,
-        auth: auth_en,
-        mainPage: mainPage_en,
-        profile: profile_en,
-        eventPage: eventPage_en,
-        "term-use": term_use_en
-      },
-      ru: {
-        header: header_ru,
-        footer: footer_ru,
-        auth: auth_ru,
-        mainPage: mainPage_ru,
-        profile: profile_ru,
-        eventPage: eventPage_ru,
-        "term-use": term_use_ru
-      },
-      ua: {
-        header: header_ua,
-        footer: footer_ua,
-        auth: auth_ua,
-        mainPage: mainPage_ua,
-        profile: profile_ua,
-        eventPage: eventPage_ua,
-        "term-use": term_use_ua
-      },
-  }});
+i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
+  interpolation: { escapeValue: false },
+  // lng: 'en',
+  resources: {
+    en: {
+      header: header_en,
+      footer: footer_en,
+      auth: auth_en,
+      mainPage: mainPage_en,
+      profile: profile_en,
+      eventPage: eventPage_en,
+      "term-use": term_use_en
+    },
+    ru: {
+      header: header_ru,
+      footer: footer_ru,
+      auth: auth_ru,
+      mainPage: mainPage_ru,
+      profile: profile_ru,
+      eventPage: eventPage_ru,
+      "term-use": term_use_ru
+    },
+    ua: {
+      header: header_ua,
+      footer: footer_ua,
+      auth: auth_ua,
+      mainPage: mainPage_ua,
+      profile: profile_ua,
+      eventPage: eventPage_ua,
+      "term-use": term_use_ua
+    },
+  }}
+);
 
 export default i18n;

@@ -21,6 +21,14 @@ export default {
   confirmEmailPagePath: () => '/comfirm-email',
   // Auth
 
+  // Additional info
+  fullAboutUsPagePath: () => [clientPath, 'about-us'].join('/'),
+  aboutUsPagePath: () => '/about-us',
+
+  fullContactInfoPagePath: () => [clientPath, 'contact-us'].join('/'),
+  contactInfoPagePath: () => '/contact-us',
+  // Additional info
+
   // Profile
   fullProfilePagePath: (userId) => [clientPath, 'user', userId].join('/'),
   profilePagePath: () => '/user/',
