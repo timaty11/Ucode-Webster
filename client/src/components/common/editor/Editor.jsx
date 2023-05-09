@@ -50,6 +50,7 @@ export function Editor() {
     const setEditedImageFor = (editedImageUrl) => {
         if (image) {
             image.croppedImageUrl = editedImageUrl;
+            console.log("🚀 ~ file: Editor.jsx:53 ~ setEditedImageFor ~ croppedImageUrl:", image.croppedImageUrl)
         }
         else {
             setImage({ croppedImageUrl: editedImageUrl });

@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { ReactSketchCanvas } from 'react-sketch-canvas'
 
 export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, setCroppedImageFor, onCancel }) {
-    // console.log("🚀 ~ file: DrawOnImage.jsx:6 ~ DrawOnImage ~ imageUrl:", imageUrl)
+    console.log("🚀 ~ file: DrawOnImage.jsx:6 ~ DrawOnImage ~ imageUrl:", imageUrl)
     let backImage;
 
     const styles = {

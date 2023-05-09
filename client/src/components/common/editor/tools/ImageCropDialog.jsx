@@ -83,6 +83,7 @@ export function ImageCropDialog({ imageUrl, zoomInit, cropInit, aspectInit, onCa
                     {aspectRatios.map(aspectRatio => (
                         <option
                             key={aspectRatio.text}
+                            defaultValue={aspectRatio.value}
                             value={aspectRatio.value}
                             selected={aspectRatio.value === aspect.value}
                         >{aspectRatio.text}</option>
