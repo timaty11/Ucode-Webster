@@ -123,5 +123,5 @@ module.exports = {
       sans: ['Merriweather'],
     },
   },
-  plugins: [require('./node_modules/flowbite/plugin')],
+  plugins: [require('./node_modules/flowbite/plugin'), require('tailwind-scrollbar')],
 };
