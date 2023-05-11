@@ -1,5 +1,5 @@
 import { ImageContainer } from "image-effects-react"
-import { ImageHolder } from "../canvas/ImageHolder"
+import { ImageHolder } from "../../canvas/ImageHolder"
 import { getFilteredImg } from "./filterImage";
 
 export function ImageEffects({ imageUrl, filter, setCroppedImageFor, onCancel }) {

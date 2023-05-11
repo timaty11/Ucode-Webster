@@ -1,5 +1,5 @@
 import { DrawOnImage } from "./DrawOnImage";
-import { ImageDrawOptions } from "./tools-options/draw/ImageDrawOptions";
+import { ImageDrawOptions } from "../tools-options/draw/ImageDrawOptions";
 import { useState } from "react";
 
 export function ImageDrawing({ imageUrl, setCroppedImageFor, onCancel })

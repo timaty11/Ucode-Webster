@@ -4,10 +4,11 @@ import { SidebarTools } from "./sidebar-tools/SidebarTools";
 
 import { useState } from "react";
 import { useEffect } from "react";
-import { ImageCropDialog } from "./tools/ImageCropDialog";
-import { ImageEffects } from "./tools/ImageEffects";
+import { ImageCropDialog } from "./tools/crop-image/ImageCropDialog";
+import { ImageEffects } from "./tools/effects-image/ImageEffects";
 import { ImageEffectsOptions } from "./tools/tools-options/effects/ImageEffectsOptions";
-import { ImageDrawing } from "./tools/ImageDrawing";
+import { ImageDrawing } from "./tools/draw-on-image/ImageDrawing";
+import { MagicBrush } from "./tools/magic-brush/MagicBrush";
 
 export function Editor() {
     const [file, setFile] = useState(null);
@@ -87,16 +88,16 @@ export function Editor() {
     }
 
     return (
-        <div className="w-full grid grid-cols-[12%_88%]">
+        <div className="w-full grid grid-cols-[5%_95%]">
             <div className="w-50px min-h-screen">
                 <SidebarTools setOption={setOption} download={Download_btn} />
             </div>
             <div className="min-h-screen grid justify-items-center items-center">
-                { !fileDataURL ?
-                        <ChoosePhoto
-                            setFile={setFile}
-                        />
-                : null}
+                {!fileDataURL ?
+                    <ChoosePhoto
+                        setFile={setFile}
+                    />
+                    : null}
                 {/* <Canvas className="hidden" /> */}
                 <canvas className="absolute opacity-0 hidden" id="image_canvas"></canvas>
 
@@ -128,14 +129,21 @@ export function Editor() {
                             onCancel={onCancel}
                         />
                     </div>
-                : null}
+                    : null}
                 {option === 4 && file ?
-                    <ImageDrawing 
+                    <ImageDrawing
                         imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
                         setCroppedImageFor={setEditedImageFor}
                         onCancel={onCancel}
                     />
-                : null}
+                    : null}
+                {
+                    option === 5 && file ?
+                        <MagicBrush
+                            imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                        /> 
+                    : null
+                }
             </div>
         </div>
     )

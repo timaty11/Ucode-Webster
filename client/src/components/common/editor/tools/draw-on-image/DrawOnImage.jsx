@@ -3,9 +3,6 @@ import { useRef } from 'react';
 import { ReactSketchCanvas } from 'react-sketch-canvas'
 
 export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, setCroppedImageFor, onCancel }) {
-    console.log("🚀 ~ file: DrawOnImage.jsx:6 ~ DrawOnImage ~ imageUrl:", imageUrl)
-    let backImage;
-
     const styles = {
         border: '0.0625rem solid #9c9c9c',
         borderRadius: '0.25rem',
@@ -17,7 +14,6 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
     async function handleSaveImage()
     {
         let imageNewUrl = await canvasRef.current.exportImage('png');
-        console.log("🚀 ~ file: DrawOnImage.jsx:20 ~ DrawOnImage ~ imageNewUrl:", imageNewUrl);
         setCroppedImageFor(imageNewUrl);
     }
 
