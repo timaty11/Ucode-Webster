@@ -3,15 +3,15 @@ import { useTranslation } from 'react-i18next';
 
 import Logo from '../Logo.jsx';
 import Navbar from './Navbar.jsx';
-import UserDropdownMenu from './UserDropdownMenu.jsx';
-import LanguageSelectMenu from './LanguageSelectMenu.jsx';
+// import UserDropdownMenu from './UserDropdownMenu.jsx';
+// import LanguageSelectMenu from './LanguageSelectMenu.jsx';
 
-import clientRoutes from '../../../routes/client/clientRoutes.js';
+// import clientRoutes from '../../../routes/client/clientRoutes.js';
 import '../../css/header.css';
 
 
 const Header = () => {
-  const [ t, i18n ] = useTranslation();
+  // const [ t, i18n ] = useTranslation();
 
   return (
     <header className="pb-10">

@@ -1,21 +1,25 @@
+import { brushes } from "./brushes";
+
+
 export function MagicBrushOptions({ setBrush }) {
 
     return (
-        <div>
-            <ul className="columns-2">
-                <li className="w-1/2"
-                    onClick={() => {
-                        setBrush("src\\components\\common\\editor\\tools\\magic-brush\\assets\\star.png");
-                    }}
-                >
+        <div className="h-screen p-8 bg-slate-950 w-full">
+            <ul className="w-full overflow-auto h-screen grid grid-cols-2 gap-4 scrollbar-thin
+                scrollbar-thumb-slate-500 scrollbar-track-slate-700 justify-center
+            ">
+
+               <li className="w-14 hover:bg-slate-800 h-14" id="bubbleBrush">
+                    <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\bubble.png" alt="" />
+                </li>
+                <li className="w-14 hover:bg-slate-800 h-14" id="starBlueBrush">
                     <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\star.png" alt="" />
                 </li>
-                <li className="w-1/2"
-                    onClick={() => {
-                        setBrush("src\\components\\common\\editor\\tools\\magic-brush\\assets\\bubble.png");
-                    }}
-                >
-                    <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\bubble.png" alt="" />
+                <li className="w-14 hover:bg-slate-800 h-14" id="starDustBrush">
+                    <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\stardust.png" alt="" />
+                </li>
+                <li className="w-14 hover:bg-slate-800 h-14" id="flareBrush">
+                    <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\flare.png" alt="" />
                 </li>
             </ul>
         </div>
