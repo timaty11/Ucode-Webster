@@ -10,7 +10,8 @@ function random(min, max) {
 
 let generalPath = 'src\\components\\common\\editor\\tools\\magic-brush\\assets\\';
 
-export function MagicBrushDraw({ imageUrl }) {
+export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
+    console.log("🚀 ~ file: MagicBrushDraw.jsx:14 ~ MagicBrushDraw ~ imageUrl:", imageUrl)
     let backgroundImage;
     let imageBrush;
     let canvasWidth;
@@ -19,6 +20,7 @@ export function MagicBrushDraw({ imageUrl }) {
     let bubble;
     let starDust;
     let flare;
+    var myCanvas;
 
     const preload = (p5) => {
         starBlue = p5.loadImage(generalPath + "star.png");
@@ -30,7 +32,8 @@ export function MagicBrushDraw({ imageUrl }) {
     }
 
     const setup = (p5, canvasParentRef) => {
-        p5.createCanvas(600, 500).parent(canvasParentRef);
+        let cnv = p5.createCanvas(600, 500).parent(canvasParentRef);
+        cnv.id('sketch');
         p5.background(backgroundImage);
         let bubbleButton = p5.select('#bubbleBrush');
         bubbleButton.mousePressed(changeBrushToBubble);
@@ -40,25 +43,33 @@ export function MagicBrushDraw({ imageUrl }) {
         starDustButton.mousePressed(changeBrushToStarDust);
         let flareButton = p5.select('#flareBrush');
         flareButton.mousePressed(changeBrushToFlare);
+        let saveSketchButton = p5.select('#saveSketchButton');
+        saveSketchButton.mouseClicked(Save);
+        let cancelSketchButton = p5.select('#cancelSketchButton');
+        cancelSketchButton.mousePressed(Cancel);
+
+        // myCanvas = p5.select("#sketch");
     }
 
-    function changeBrushToBubble()
-    {
+    function keyPressed(p5) {
+        if (p5.keyCode === p5.UP_ARROW) {
+            p5.save();
+        }
+    }
+
+    function changeBrushToBubble() {
         imageBrush = bubble;
     }
 
-    function changeBrushToStarBlue()
-    {
+    function changeBrushToStarBlue() {
         imageBrush = starBlue;
     }
 
-    function changeBrushToStarDust()
-    {
+    function changeBrushToStarDust() {
         imageBrush = starDust;
     }
 
-    function changeBrushToFlare()
-    {
+    function changeBrushToFlare() {
         imageBrush = flare;
     }
 
@@ -79,21 +90,24 @@ export function MagicBrushDraw({ imageUrl }) {
         console.log("Pressed!");
     }
 
-    function Save()
-    {
+    function Save(p5) {
+        // p5.save();
+        // myCanvas = document.getElementById("#sketch");
+        // let jhjh = myCanvas.id;
+        // console.log("🚀 ~ file: MagicBrushDraw.jsx:86 ~ Save ~ myCanvas:", myCanvas)
+        // var data = jhjh.toDataURL();
+        // console.log("🚀 ~ file: MagicBrushDraw.jsx:85 ~ Save ~ data:", data)
+        // setCroppedImageFor(data);
+        save();
+    }
 
+    const Cancel = () => {
+        onCancel();
     }
 
     return (
         <div className="container w-full flex justify-center items-center">
-            <Sketch preload={preload} setup={setup} draw={draw} mousePressed={mousePressed} />
-            <div className="controls">
-                <button
-                    onClick={() => {
-                        Save();
-                    }}
-                >Save</button>
-            </div>
+            <Sketch preload={preload} setup={setup} draw={draw} mousePressed={mousePressed} keyPressed={keyPressed} />
         </div>
     )
 }

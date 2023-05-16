@@ -141,6 +141,8 @@ export function Editor() {
                     option === 5 && file ?
                         <MagicBrush
                             imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                            onCancel={onCancel}
+                            setCroppedImageFor={setCroppedImageFor}
                         /> 
                     : null
                 }

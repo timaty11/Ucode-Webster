@@ -5,7 +5,7 @@ import { brushes } from "../tools-options/magic-brush/brushes";
 
 import Sketch from "react-p5";
 
-export function MagicBrush({ imageUrl }) {
+export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
     const [brush, setBrush] = useState(null);
     const [brushOption, setBrushOption] = useState(null);
     let backgroundImage;
@@ -26,8 +26,8 @@ export function MagicBrush({ imageUrl }) {
 
     return (
         <div className="grid grid-cols-[82%_18%] w-full">
-            <MagicBrushDraw imageUrl={imageUrl}  brush={brush} />
-            <MagicBrushOptions setBrush={setBrushOption} />
+            <MagicBrushDraw imageUrl={imageUrl}  setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} />
+            <MagicBrushOptions setBrush={setBrushOption}  />
         </div>
     )
 }

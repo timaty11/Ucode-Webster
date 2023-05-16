@@ -22,6 +22,14 @@ export function MagicBrushOptions({ setBrush }) {
                     <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\flare.png" alt="" />
                 </li>
             </ul>
+            <div className="controls text-white">
+                <button
+                    id="saveSketchButton"
+                >Save</button>
+                <button
+                    id="cancelSketchButton"
+                >Cancel</button>
+            </div>
         </div>
     )
 }
