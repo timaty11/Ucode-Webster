@@ -1,12 +1,10 @@
 export function SidebarTools(props) {
 
-    function handleOption(e)
-    {
+    function handleOption(e) {
         props.setOption(e);
     }
 
-    function download()
-    {
+    function download() {
         props.download();
     }
 
@@ -30,17 +28,27 @@ export function SidebarTools(props) {
                     <i className='bx bxs-paint'></i>
                     {/* <p>Paint</p> */}
                 </li>
-                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={e => handleOption(5)}>
+                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={e => handleOption(5)} id="magic-brush-options">
                     <i className='bx bxs-magic-wand' ></i>
                     {/* <p>Magic stick</p> */}
                 </li>
-                <li className="flex gap-4 items-center p-5 cursor-pointer">
+                <li className="flex gap-4 items-center p-5 cursor-pointer"
+                    title="Advanced paint"
+                    onClick={e => handleOption(5)}
+                    id="advanced-brush-options"
+                >
+                    <i className='bx bxs-palette'></i>
+                </li>
+                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={() => { handleOption(7) }}>
                     <i className='bx bx-text' ></i>
                     {/* <p>Text</p> */}
                 </li>
                 <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={download}>
                     <i className='bx bx-download'></i>
                     {/* <p>Download</p> */}
+                </li>
+                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={() => handleOption(8)} title="Remove background">
+                    <i className='bx bx-minus-back'></i>
                 </li>
             </ul>
         </div>

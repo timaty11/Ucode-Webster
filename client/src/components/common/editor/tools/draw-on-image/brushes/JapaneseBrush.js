@@ -1,49 +1,47 @@
-// brushSize simply is the thikness of the brush stroke
-let brushSize = 40;
+// brushSize simply is the thickness of the brush stroke
+let brushSize = 25;
 let f = 0.5;
-let spring = 0.4;
-let friction = 0.45;
+let spring = 0.5;
+let friction = 0.5;
 let v = 0.5;
 let r = 0;
 let vx = 0;
 let vy = 0;
-let splitNum = 100;
-let diff = 8;
-
-export function JapaneseBrush() {
-  if (mouseIsPressed) {
-    if (!f) {
+let splitNum = 10;
+let diff = brushSize/8;
+export function JapaneseBrush(p5) {
+  if(p5.mouseIsPressed) {
+    if(!f) {
       f = true;
-      x = mouseX;
-      y = mouseY;
+      p5.x = p5.mouseX;
+      p5.y = p5.mouseY;
     }
-    vx += (mouseX - x) * spring;
-    vy += (mouseY - y) * spring;
+    vx += ( p5.mouseX - p5.x ) * spring;
+    vy += ( p5.mouseY - p5.y ) * spring;
     vx *= friction;
     vy *= friction;
 
-    v += sqrt(vx * vx + vy * vy) - v;
+    v += p5.sqrt( vx*vx + vy*vy ) - v;
     v *= 0.6;
 
-    oldR = r;
+    p5.oldR = r;
     r = brushSize - v;
 
-    for (let i = 0; i < splitNum; ++i) {
-      oldX = x;
-      oldY = y;
-      x += vx / splitNum;
-      y += vy / splitNum;
-      oldR += (r - oldR) / splitNum;
-      if (oldR < 1) {
-        oldR = 1;
-      }
-      strokeWeight(oldR + diff); // AMEND: oldR -> oldR+diff
-      line(x, y, oldX, oldY);
-      strokeWeight(oldR); // ADD
-      line(x + diff * 1.5, y + diff * 2, oldX + diff * 2, oldY + diff * 2); // ADD
-      line(x - diff, y - diff, oldX - diff, oldY - diff); // ADD
+    for( let i = 0; i < splitNum; ++i ) {
+      p5.oldX = p5.x;
+      p5.oldY = p5.y;
+      p5.x += vx / splitNum;
+      p5.y += vy / splitNum;
+      p5.oldR += ( r - p5.oldR ) / splitNum;
+      if(p5.oldR < 1) { p5.oldR = 1; }
+      p5.strokeWeight( p5.oldR+diff );  // AMEND: oldR -> oldR+diff
+      p5.line( p5.x, p5.y, p5.oldX, p5.oldY );
+      p5.strokeWeight( p5.oldR );  // ADD
+      p5.line( p5.x+diff*1.5, p5.y+diff*2, p5.oldX+diff*2, p5.oldY+diff*2 );  // ADD
+      p5.line( p5.x-diff, p5.y-diff, p5.oldX-diff, p5.oldY-diff );  // ADD
     }
-  } else if (f) {
+
+  } else if(f) {
     vx = vy = 0;
     f = false;
   }

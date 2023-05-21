@@ -4,7 +4,7 @@ import { brushes } from "./brushes";
 export function MagicBrushOptions({ setBrush }) {
 
     return (
-        <div className="h-screen p-8 bg-slate-950 w-full">
+        <div className="h-screen p-8 bg-slate-950 w-full" id="magic-brushes">
             <ul className="w-full overflow-auto h-screen grid grid-cols-2 gap-4 scrollbar-thin
                 scrollbar-thumb-slate-500 scrollbar-track-slate-700 justify-center
             ">

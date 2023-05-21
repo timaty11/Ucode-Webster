@@ -4,6 +4,7 @@ import { MagicBrushDraw } from "./MagicBrushDraw";
 import { brushes } from "../tools-options/magic-brush/brushes";
 
 import Sketch from "react-p5";
+import { AdvancedDrawOptions } from "../tools-options/advanced-draw/AdvancedDrawOptions";
 
 export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
     const [brush, setBrush] = useState(null);
@@ -28,6 +29,7 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
         <div className="grid grid-cols-[82%_18%] w-full">
             <MagicBrushDraw imageUrl={imageUrl}  setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} />
             <MagicBrushOptions setBrush={setBrushOption}  />
+            <AdvancedDrawOptions />
         </div>
     )
 }

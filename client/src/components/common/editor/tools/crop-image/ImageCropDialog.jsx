@@ -43,6 +43,7 @@ export function ImageCropDialog({ imageUrl, zoomInit, cropInit, aspectInit, onCa
     };
 
     const onCropComplete = (croppedArea, croppedAreaPixels) => {
+        console.log("🚀 ~ file: ImageCropDialog.jsx:46 ~ onCropComplete ~ croppedAreaPixels:", croppedAreaPixels)
         setCroppedAreaPixels(croppedAreaPixels)
     };
 

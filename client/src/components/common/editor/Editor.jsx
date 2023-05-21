@@ -9,6 +9,9 @@ import { ImageEffects } from "./tools/effects-image/ImageEffects";
 import { ImageEffectsOptions } from "./tools/tools-options/effects/ImageEffectsOptions";
 import { ImageDrawing } from "./tools/draw-on-image/ImageDrawing";
 import { MagicBrush } from "./tools/magic-brush/MagicBrush";
+import { AdvancedDrawing } from "./tools/advanced-drawing/AdvancedDrawing";
+import { TextOnImage } from "./tools/text-markup/TextOnImage";
+import { RemoveBackground } from "./tools/remove-bg/RemoveBackground";
 
 export function Editor() {
     const [file, setFile] = useState(null);
@@ -98,10 +101,10 @@ export function Editor() {
                         setFile={setFile}
                     />
                     : null}
-                {/* <Canvas className="hidden" /> */}
+                {/* <Canvas className="hidden" />*/}
                 <canvas className="absolute opacity-0 hidden" id="image_canvas"></canvas>
 
-                {!option ?
+                 {!option ?
                     <ImageHolder
                         fileDataURL={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
                     />
@@ -138,7 +141,7 @@ export function Editor() {
                     />
                     : null}
                 {
-                    option === 5 && file ?
+                    option === 5  && file ?
                         <MagicBrush
                             imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
                             onCancel={onCancel}
@@ -146,7 +149,26 @@ export function Editor() {
                         /> 
                     : null
                 }
+                {
+                    option === 6 && file ?
+                    <AdvancedDrawing 
+                        imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                    />
+                    : null
+                } 
+                {
+                    option === 7 && file ?
+                    <TextOnImage 
+                        imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                    />
+                    : null
+                }
+                {
+                    option === 8 && file ?
+                    <RemoveBackground imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}/>
+                    :null
+                }
             </div>
-        </div>
+         </div>
     )
 }
