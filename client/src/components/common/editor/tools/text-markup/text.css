@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Actor&family=Alegreya+Sans:wght@300&family=Bad+Script&family=Carter+One&family=Creepster&family=Gloria+Hallelujah&family=Great+Vibes&family=Gruppo&family=Indie+Flower&family=Jura&family=Kalam&family=Kaushan+Script&family=Leckerli+One&family=Luckiest+Guy&family=Merienda&family=Nanum+Pen+Script&family=Orbitron&family=Patrick+Hand&family=Permanent+Marker&family=Rock+Salt&family=Sacramento&family=Satisfy&family=Syncopate&family=Tangerine&family=Zeyada&display=swap');
+
+
 .canvas-container.upper-canvas {
     width: 0;
     height: 0;
@@ -16,3 +19,6 @@
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
   }
+
+
+

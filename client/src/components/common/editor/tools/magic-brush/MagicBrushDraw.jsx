@@ -3,6 +3,10 @@ import Sketch from "react-p5";
 import { JapaneseBrush } from "../draw-on-image/brushes/JapaneseBrush";
 import { Ellipses } from "../draw-on-image/brushes/EllipseBrush";
 import { ColoredEllSpray } from "../draw-on-image/brushes/ColoredEllSpray";
+import { drawText } from "../text-p5/templates_text/textNeon";
+import { OpenCloseMagicBrush } from './OpenCloseMagicBrush.js';
+import { OpenCloseAdvanced } from './OpenCloseAdvanced.js';
+import '../text-markup/text.css';
 
 let brushCounterLimit = 3;
 let brushCounter = 0;
@@ -26,22 +30,31 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
     let starDust;
     let flare;
     var myCanvas;
-    let imageBrushFlag=false;
-    let inkBrushFlag=false;
+    let imageBrushFlag = false;
+    let inkBrushFlag = false;
     let InkIndex = 1;
+    let font;
+    let water_droplets;
+    let cloud;
+    let stamp;
+    let topLayer;
 
     const preload = (p5) => {
         starBlue = p5.loadImage(generalPath + "star.png");
         bubble = p5.loadImage(generalPath + "bubble.png");
         starDust = p5.loadImage(generalPath + "stardust.png");
         flare = p5.loadImage(generalPath + "flare.png");
+        water_droplets = p5.loadImage(generalPath + "water_droplets.png");
+        cloud = p5.loadImage(generalPath + "cloud.png");
+
         imageBrush = starBlue;
         backgroundImage = p5.loadImage(imageUrl);
-
+        font = p5.loadFont('src\\components\\common\\editor\\tools\\text-p5\\templates_text\\AlexBrush-Regular.ttf');
     }
-
+    let ctx;
     const setup = (p5, canvasParentRef) => {
         let cnv = p5.createCanvas(backgroundImage.width, backgroundImage.height).parent(canvasParentRef);
+        ctx = cnv.drawingContext;
         cnv.id('sketch');
 
         p5.background(backgroundImage);
@@ -54,6 +67,13 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
         starDustButton.mousePressed(changeBrushToStarDust);
         let flareButton = p5.select('#flareBrush');
         flareButton.mousePressed(changeBrushToFlare);
+
+        let waterDropButton = p5.select('#waterDropletsBrush');
+        waterDropButton.mousePressed(changeBrushToWaterDrop);
+        let cloudButton = p5.select('#cloudBrush');
+        cloudButton.mousePressed(changeBrushToCloud);
+
+
         let saveSketchButton = p5.select('#saveSketchButton');
         saveSketchButton.mouseClicked(Save);
         let cancelSketchButton = p5.select('#cancelSketchButton');
@@ -71,45 +91,37 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
         mgBrush.mouseClicked(OpenCloseMagicBrush);
         let advBrush = p5.select('#advanced-brush-options');
         advBrush.mouseClicked(OpenCloseAdvanced);
-        
-        // myCanvas = p5.select("#sketch");
+        // p5.colorMode(p5.HSB, 360, 100, 100, 100);
     }
 
-    function OpenCloseMagicBrush() {
-        let obj2 = document.getElementById('advanced-brushes');
-        let obj3 = document.getElementById('magic-brushes');
-        obj3.style.display = 'block';
-        obj2.style.display = 'none';
-        imageBrushFlag = true;
-        inkBrushFlag = false;
+    function SetupScratch(p5) {
+        topLayer = p5.createGraphics(p5.width, p5.height);
+
+        topLayer.background(200);
+        topLayer.textSize(50);
+        topLayer.textAlign(p5.CENTER);
+        topLayer.text("SCRATCH ME", p5.width / 2, p5.height / 2);
+
+        topLayer.imageMode(p5.CENTER);
+        topLayer.strokeWeight(40);
+        topLayer.blendMode(p5.REMOVE);
     }
 
-    function OpenCloseAdvanced() {
-        let obj2 = document.getElementById('advanced-brushes');
-        let obj3 = document.getElementById('magic-brushes');
-        obj3.style.display = 'none';
-        obj2.style.display = 'block';
-        imageBrushFlag = false;
-        inkBrushFlag = true;
-    }
+    function GetInk(p5, choice) {
+        switch (choice) {
+            case 1:
+                JapaneseBrush(p5);
+                break;
 
-   function GetInk(p5, choice)
-   {
-    switch (choice)
-    {
-        case 1:
-            JapaneseBrush(p5);
-            break;
-        
-        case 2:
-            Ellipses(p5);
-            break;
+            case 2:
+                Ellipses(p5);
+                break;
 
-        case 3:
-            ColoredEllSpray(p5);
-            break;
+            case 3:
+                ColoredEllSpray(p5);
+                break;
+        }
     }
-   }
 
     function keyPressed(p5) {
         if (p5.keyCode === p5.UP_ARROW) {
@@ -119,6 +131,14 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
 
     function changeBrushToBubble() {
         imageBrush = bubble;
+    }
+
+    function changeBrushToWaterDrop() {
+        imageBrush = water_droplets;
+    }
+
+    function changeBrushToCloud() {
+        imageBrush = cloud;
     }
 
     function changeBrushToStarBlue() {
@@ -133,6 +153,32 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
         imageBrush = flare;
     }
 
+    function drawGradient(x, y, p5) {
+        var radius = p5.dim / 2;
+        var h = 360;
+        var fg = 255;
+        for (var r = radius; r > 0; --r) {
+            if (r >= 216) {
+                p5.fill(255, fg--, fg--);
+            }
+            else {
+                p5.fill(17, fg -= 5, fg -= 5);
+            }
+
+            p5.ellipse(x, y, r, r);
+            h = (h + 1) % 360;
+        }
+    }
+
+    function radialGradient(x, y, w, h, inner, outer, p5) {
+        // p5.ColoredEllSpraynoStroke();
+        for (let i = Math.max(w, h); i > 0; i--) {
+            const step = i / Math.max(w, h);
+            const colour = p5.lerpColor(inner, outer, step);
+            p5.fill(colour);
+            p5.ellipse(x, y, step * w, step * h);
+        }
+    }
     const draw = p5 => {
         if (p5.mouseIsPressed && imageBrush && imageBrushFlag) {
             p5.imageMode(p5.CENTER);
@@ -144,29 +190,37 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
                 p5.image(imageBrush, p5.mouseX, p5.mouseY, size, size);
             }
         }
-        // else 
-        if( inkBrushFlag)
-        {
-            // JapaneseBrush(p5);
-            
+
+        if (inkBrushFlag) {
             GetInk(p5, InkIndex);
         }
+
     }
-        // console.log("🚀 ~ file: MagicBrushDraw.jsx:120 ~ draw ~ inkBrushFlag:", inkBrushFlag)
+
+    function OpenCloseAdvanced() {
+        let obj2 = document.getElementById('advanced-brushes');
+        let obj3 = document.getElementById('magic-brushes');
+        obj3.style.display = 'none';
+        obj2.style.display = 'block';
+        imageBrushFlag = false;
+        inkBrushFlag = true;
+    }
+
+    function OpenCloseMagicBrush() {
+        let obj2 = document.getElementById('advanced-brushes');
+        let obj3 = document.getElementById('magic-brushes');
+        obj3.style.display = 'block';
+        obj2.style.display = 'none';
+        imageBrushFlag = true;
+        inkBrushFlag = false;
+    }
 
     const mousePressed = (p5) => {
         console.log("Pressed!");
     }
 
     function Save(p5) {
-        // p5.save();
-        // myCanvas = document.getElementById("#sketch");
-        // let jhjh = myCanvas.id;
-        // console.log("🚀 ~ file: MagicBrushDraw.jsx:86 ~ Save ~ myCanvas:", myCanvas)
-        // var data = jhjh.toDataURL();
-        // console.log("🚀 ~ file: MagicBrushDraw.jsx:85 ~ Save ~ data:", data)
-        // setCroppedImageFor(data);
-        save();
+        p5.save();
     }
 
     const Cancel = () => {
@@ -186,3 +240,4 @@ function incrementBrushCounter() {
         brushCounter = 0;
     }
 }
+

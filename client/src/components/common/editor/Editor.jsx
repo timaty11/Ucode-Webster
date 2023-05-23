@@ -12,6 +12,8 @@ import { MagicBrush } from "./tools/magic-brush/MagicBrush";
 import { AdvancedDrawing } from "./tools/advanced-drawing/AdvancedDrawing";
 import { TextOnImage } from "./tools/text-markup/TextOnImage";
 import { RemoveBackground } from "./tools/remove-bg/RemoveBackground";
+import { TextOptions } from "./tools/text-p5/TextOptions";
+import { TextContainer } from "./tools/text-markup/TextContainer";
 
 export function Editor() {
     const [file, setFile] = useState(null);
@@ -95,7 +97,7 @@ export function Editor() {
             <div className="w-50px min-h-screen">
                 <SidebarTools setOption={setOption} download={Download_btn} />
             </div>
-            <div className="min-h-screen grid justify-items-center items-center">
+            <div className="min-h-screen m-10 grid justify-items-center">
                 {!fileDataURL ?
                     <ChoosePhoto
                         setFile={setFile}
@@ -104,7 +106,7 @@ export function Editor() {
                 {/* <Canvas className="hidden" />*/}
                 <canvas className="absolute opacity-0 hidden" id="image_canvas"></canvas>
 
-                 {!option ?
+                {!option ?
                     <ImageHolder
                         fileDataURL={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
                     />
@@ -141,34 +143,34 @@ export function Editor() {
                     />
                     : null}
                 {
-                    option === 5  && file ?
+                    option === 5 && file ?
                         <MagicBrush
                             imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
                             onCancel={onCancel}
                             setCroppedImageFor={setCroppedImageFor}
-                        /> 
-                    : null
+                        />
+                        : null
                 }
                 {
                     option === 6 && file ?
-                    <AdvancedDrawing 
-                        imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
-                    />
-                    : null
-                } 
+                        <AdvancedDrawing
+                            imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                        />
+                        : null
+                }
                 {
                     option === 7 && file ?
-                    <TextOnImage 
+                        <TextContainer
                         imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
-                    />
-                    : null
+                        />
+                        : null
                 }
                 {
                     option === 8 && file ?
-                    <RemoveBackground imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}/>
-                    :null
+                        <RemoveBackground imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL} />
+                        : null
                 }
             </div>
-         </div>
+        </div>
     )
 }
