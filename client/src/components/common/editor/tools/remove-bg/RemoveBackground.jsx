@@ -2,7 +2,7 @@ const API_KEY = 'gWnwqCkxv88Gw4V3wefCwBWH';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import FormData from 'form-data'
-import fs from 'fs';
+// import fs from 'fs';
 // import { Buffer } from "buffer";
 // window.Buffer = window.Buffer || require("buffer").Buffer; 
 // import { RemoveBgResult, RemoveBgError, removeBackgroundFromImageBase64 } from "remove.bg";
