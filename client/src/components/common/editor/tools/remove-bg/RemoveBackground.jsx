@@ -105,12 +105,7 @@ export function RemoveBackground({ imageUrl }) {
         let inputPath = 'src\\components\\common\\editor\\tools\\remove-bg\\tmp\\imageTmp.png';
         let file = dataURLtoFile(imageUrl, 'src\\components\\common\\editor\\tools\\remove-bg\\tmp\\imageTmp.png');
         formData.append('image_file', file, file.name);
-        console.log("🚀 ~ file: RemoveBackground.jsx:93 ~ RemoveBg ~ currentImageUrl:", currentImageUrl)
-        
-        console.log("🚀 ~ file: RemoveBackground.jsx:108 ~ RemoveBg ~ file:", file)
-        // setIsLoading(true);
-        
-        
+       
         await axios({
             method: 'post',
             url: 'https://api.remove.bg/v1.0/removebg',

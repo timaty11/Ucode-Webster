@@ -18,8 +18,9 @@ function random(min, max) {
 let OpenCloseMagicBrushFlag;
 
 let generalPath = 'src\\components\\common\\editor\\tools\\magic-brush\\assets\\';
+let generalScratchPath = 'src\\components\\common\\editor\\tools\\scratch-effect\\assets\\';
 
-export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
+export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagImage, flagInk }) {
     let backgroundImage;
     let imageBrush;
     let inkBrush;
@@ -38,6 +39,19 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
     let cloud;
     let stamp;
     let topLayer;
+    let inputFileForScratchForeground;
+    let inputFileForScratchBackground;
+    let chkForeground;
+    let chkBackground;
+    let imageGroundScratch;
+    let imageBackgroundScratch;
+    let defineScratchGroundFlag;
+    let includeScratch;
+    let count;
+    let starScratch;
+    let scratchBrush;
+    let bigGreenLeafScratch;
+    let autumnLeafScratch;
 
     const preload = (p5) => {
         starBlue = p5.loadImage(generalPath + "star.png");
@@ -46,6 +60,10 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
         flare = p5.loadImage(generalPath + "flare.png");
         water_droplets = p5.loadImage(generalPath + "water_droplets.png");
         cloud = p5.loadImage(generalPath + "cloud.png");
+
+        starScratch = p5.loadImage(generalScratchPath + "starScratch.png");
+        bigGreenLeafScratch = p5.loadImage(generalScratchPath + "big_green_leaf.png");
+        autumnLeafScratch = p5.loadImage(generalScratchPath + "autumn_leaf.png");
 
         imageBrush = starBlue;
         backgroundImage = p5.loadImage(imageUrl);
@@ -73,9 +91,19 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
         let cloudButton = p5.select('#cloudBrush');
         cloudButton.mousePressed(changeBrushToCloud);
 
+        let starScratchButton = p5.select('#star-scratch');
+        starScratchButton.mousePressed(changeStarScratch);
+        let bigGreenLeafScratchButton = p5.select('#green-leaf-scratch');
+        bigGreenLeafScratchButton.mousePressed(changeBigGreenLeafScratch);
+        let autumnLeafScratchButton = p5.select('#autumn-leaf-scratch');
+        autumnLeafScratchButton.mousePressed(changeAutumnLeafScratch);
 
-        let saveSketchButton = p5.select('#saveSketchButton');
-        saveSketchButton.mouseClicked(Save);
+
+
+        // let saveSketchButton = p5.select('#saveSketchButton');
+        // saveSketchButton.mouseClicked(Save);
+        let saveButton = p5.select('#save-button');
+        saveButton.mousePressed(() => Save(p5));
         let cancelSketchButton = p5.select('#cancelSketchButton');
         cancelSketchButton.mousePressed(Cancel);
 
@@ -91,21 +119,118 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
         mgBrush.mouseClicked(OpenCloseMagicBrush);
         let advBrush = p5.select('#advanced-brush-options');
         advBrush.mouseClicked(OpenCloseAdvanced);
+        let scratch = p5.select('#scratch-brush-options');
+        scratch.mouseClicked(() => OpenCloseScratch(p5));
+        count = 1;
+        
+
+        if (includeScratch) {
+            topLayer = p5.createGraphics(p5.width, p5.height);
+
+            topLayer.background(200);
+            topLayer.textSize(50);
+            topLayer.textAlign(p5.CENTER);
+            topLayer.text("SCRATCH ME", p5.width / 2, p5.height / 2);
+
+            topLayer.imageMode(p5.CENTER);
+            topLayer.strokeWeight(40);
+            topLayer.blendMode(p5.REMOVE);
+        }
         // p5.colorMode(p5.HSB, 360, 100, 100, 100);
+
+        // inputFileForScratchForeground = document.getElementById("file-input-scratch-fore");
+        // inputFileForScratchForeground.addEventListener("change", handleFiles(p5), false);
+
+        // inputFileForScratchBackground = document.getElementById("file-input-scratch-back");
+        // inputFileForScratchBackground.addEventListener("change", () => {
+        //     const fileList = this.files; /* now you can work with the file list */
+        //     const file = fileList[0]
+        //     console.log(file)
+
+        //     var reader = new FileReader();
+
+        //     reader.onload = function (e) {
+        //         if (file.type === 'image/png' || file.type === 'image/jpeg') {
+        //             imageGroundScratch = p5.createImg(e.target.result, '');
+        //             imageGroundScratch.hide();
+        //         } else { 
+        //             imageGroundScratch = null;
+        //         }
+        //     }
+
+        //     reader.readAsDataURL(file);
+        // }, false);
+
+        // chkForeground = p5.select("#checkForeground").elt;
+        // chkBackground = p5.select("#checkBackground").elt;
+
+        // chkForeground.onchange = function () {
+        //     if (chkForeground.checked) {
+        //         chkBackground.checked = false;
+        //         inputFileForScratchForeground.disabled = "true";
+        //         inputFileForScratchBackground.disabled = "false";
+        //         defineScratchGroundFlag = true;
+        //     }
+
+        // }
+
+        // chkBackground.onchange = function () {
+        //     if (chkBackground.checked) {
+        //         chkForeground.checked = false;
+        //         inputFileForScratchBackground.disabled = "true";
+        //         inputFileForScratchForeground.disabled = "false";
+        //         defineScratchGroundFlag = false;
+        //     }
+
+        // }
     }
 
-    function SetupScratch(p5) {
-        topLayer = p5.createGraphics(p5.width, p5.height);
-
-        topLayer.background(200);
-        topLayer.textSize(50);
-        topLayer.textAlign(p5.CENTER);
-        topLayer.text("SCRATCH ME", p5.width / 2, p5.height / 2);
-
-        topLayer.imageMode(p5.CENTER);
-        topLayer.strokeWeight(40);
-        topLayer.blendMode(p5.REMOVE);
+    function changeStarScratch() {
+        scratchBrush = starScratch;
     }
+
+    function changeBigGreenLeafScratch() {
+        scratchBrush = bigGreenLeafScratch;
+    }
+
+    function changeAutumnLeafScratch() {
+        scratchBrush = autumnLeafScratch;
+    }
+
+    function handleFiles() {
+        // const fileList = this.files; /* now you can work with the file list */
+        // const file = fileList[0]
+        // console.log(file)
+
+        // var reader = new FileReader();
+
+        // reader.onload = function (e) {
+        //     if (file.type === 'image/png' || file.type === 'image/jpeg') {
+        //         imageGroundScratch = p5.createImg(e.target.result, '');
+        //         imageGroundScratch.hide();
+        //     } else {
+        //         imageGroundScratch = null;
+        //     }
+        // }
+
+        // reader.readAsDataURL(file);
+    }
+
+    // function SetupScratch(p5) {
+    //     topLayer = p5.createGraphics(p5.width, p5.height);
+
+    //     if (defineScratchGroundFlag) {
+    //         topLayer.background(imageGroundScratch);
+    //     }
+
+    //     topLayer.textSize(50);
+    //     topLayer.textAlign(p5.CENTER);
+    //     topLayer.text("SCRATCH ME", p5.width / 2, p5.height / 2);
+
+    //     topLayer.imageMode(p5.CENTER);
+    //     topLayer.strokeWeight(40);
+    //     topLayer.blendMode(p5.REMOVE);
+    // }
 
     function GetInk(p5, choice) {
         switch (choice) {
@@ -179,7 +304,16 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
             p5.ellipse(x, y, step * w, step * h);
         }
     }
+
     const draw = p5 => {
+        // ctx.filter = 'blur(20px)';
+        // ctx.filter = "background: -webkit-linear-gradient(left, rgba(66, 10, 14, 0.2), transparent);  background: linear-gradient(to right, rgba(66, 10, 14, 0.2), transparent);  mix-blend-mode: darken; ";
+        // let imgtmp = p5.createImg(imageUrl);
+        // imgtmp.hide();
+        // ctx.drawImage(imgtmp.elt, 0, 0);
+        
+        
+
         if (p5.mouseIsPressed && imageBrush && imageBrushFlag) {
             p5.imageMode(p5.CENTER);
 
@@ -195,24 +329,66 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel }) {
             GetInk(p5, InkIndex);
         }
 
+        if (includeScratch) {
+            p5.image(backgroundImage, 0, 0, p5.width, p5.height);
+
+            if (p5.mouseIsPressed) {
+                if (scratchBrush) {
+                    topLayer.image(scratchBrush, p5.mouseX, p5.mouseY, scratchBrush.width / 4, scratchBrush.height / 4);
+                }
+                else {
+                    topLayer.line(p5.pmouseX, p5.pmouseY, p5.mouseX, p5.mouseY);
+                }
+            }
+
+            p5.image(topLayer, 0, 0);
+        }
     }
 
     function OpenCloseAdvanced() {
+        let obj1 = document.getElementById('scratch-brushes');
         let obj2 = document.getElementById('advanced-brushes');
         let obj3 = document.getElementById('magic-brushes');
         obj3.style.display = 'none';
         obj2.style.display = 'block';
+        obj1.style.display = 'none';
         imageBrushFlag = false;
         inkBrushFlag = true;
+        includeScratch = false;
+    }
+
+    function OpenCloseScratch(p5) {
+        let obj1 = document.getElementById('scratch-brushes');
+        let obj2 = document.getElementById('advanced-brushes');
+        let obj3 = document.getElementById('magic-brushes');
+        obj3.style.display = 'none';
+        obj2.style.display = 'none';
+        obj1.style.display = 'block';
+        imageBrushFlag = false;
+        inkBrushFlag = false;
+        includeScratch = true;
+        topLayer = p5.createGraphics(p5.width, p5.height);
+
+        topLayer.background(200);
+        topLayer.textSize(50);
+        topLayer.textAlign(p5.CENTER);
+        topLayer.text("SCRATCH ME", p5.width / 2, p5.height / 2);
+
+        topLayer.imageMode(p5.CENTER);
+        topLayer.strokeWeight(40);
+        topLayer.blendMode(p5.REMOVE);
     }
 
     function OpenCloseMagicBrush() {
+        let obj1 = document.getElementById('scratch-brushes');
         let obj2 = document.getElementById('advanced-brushes');
         let obj3 = document.getElementById('magic-brushes');
         obj3.style.display = 'block';
         obj2.style.display = 'none';
+        obj1.style.display = 'none';
         imageBrushFlag = true;
         inkBrushFlag = false;
+        includeScratch = false;
     }
 
     const mousePressed = (p5) => {

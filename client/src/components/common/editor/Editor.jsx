@@ -14,6 +14,7 @@ import { TextOnImage } from "./tools/text-markup/TextOnImage";
 import { RemoveBackground } from "./tools/remove-bg/RemoveBackground";
 import { TextOptions } from "./tools/text-p5/TextOptions";
 import { TextContainer } from "./tools/text-markup/TextContainer";
+import { Scratch } from "./tools/scratch-effect/Scratch";
 
 export function Editor() {
     const [file, setFile] = useState(null);
@@ -169,6 +170,12 @@ export function Editor() {
                     option === 8 && file ?
                         <RemoveBackground imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL} />
                         : null
+                }
+                {
+                    option === 9 && file ?
+                    <Scratch />
+                    :
+                    null
                 }
             </div>
         </div>
