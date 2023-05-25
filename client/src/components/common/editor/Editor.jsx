@@ -15,6 +15,7 @@ import { RemoveBackground } from "./tools/remove-bg/RemoveBackground";
 import { TextOptions } from "./tools/text-p5/TextOptions";
 import { TextContainer } from "./tools/text-markup/TextContainer";
 import { Scratch } from "./tools/scratch-effect/Scratch";
+import { RemoveObjectFromImage } from "./tools/remove-object/RemoveObjectFromImage";
 
 export function Editor() {
     const [file, setFile] = useState(null);
@@ -162,7 +163,7 @@ export function Editor() {
                 {
                     option === 7 && file ?
                         <TextContainer
-                        imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                            imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
                         />
                         : null
                 }
@@ -173,9 +174,17 @@ export function Editor() {
                 }
                 {
                     option === 9 && file ?
-                    <Scratch />
-                    :
-                    null
+                        <Scratch />
+                        :
+                        null
+                }
+                {
+                    option === 10 && file ?
+                        <RemoveObjectFromImage
+                            imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                        />
+                        :
+                        null
                 }
             </div>
         </div>
