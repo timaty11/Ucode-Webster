@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import { ReactSketchCanvas } from 'react-sketch-canvas'
 
@@ -15,6 +15,15 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
     {
         let imageNewUrl = await canvasRef.current.exportImage('png');
         setCroppedImageFor(imageNewUrl);
+    }
+
+    const [tools, setTools] = useState('');
+
+    const whatTools = async (tool) => {
+        localStorage.setItem(
+            "toool", tool);
+
+            setTools(tool);
     }
 
     
@@ -40,10 +49,13 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 />
             </div>
 
+            
+
             <div className='text-white text-2xl columns-1 gap-y-2'>
                 <button className='w-full'
                     onClick={() => {
                         canvasRef.current.eraseMode(false);
+                        whatTools("pencil");
                     }}
                 >
                     <i className='bx bxs-pencil'></i>
@@ -51,6 +63,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 <button className='w-full'
                     onClick={() => {
                         canvasRef.current.eraseMode(true);
+                        whatTools("sterka");
                     }}
                 >
                     <i className='bx bxs-eraser' ></i>
@@ -58,6 +71,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 <button className='w-full'
                     onClick={() => {
                         canvasRef.current.undo();
+                        // whatTools("nazad");
                     }}
                 >
                     <i className='bx bx-undo' ></i>
@@ -65,6 +79,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 <button className='w-full'
                     onClick={() => {
                         canvasRef.current.redo();
+                        // whatTools("vpered");
                     }}
                 >
                     <i className='bx bx-redo' ></i>
@@ -73,6 +88,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 <button className='w-full' title='Clear all'
                     onClick={() => {
                         canvasRef.current.clearCanvas();
+                        // whatTools("clear");
                     }}
                 >
                     <i className='bx bxs-trash-alt' ></i>

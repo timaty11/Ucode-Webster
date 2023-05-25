@@ -11,12 +11,7 @@ export function ImageDrawing({ imageUrl, setCroppedImageFor, onCancel })
 //w-full grid grid-cols-[23%_72%] gap-6 h-screen
     return (
         <div className="flex ">
-            <ImageDrawOptions 
-                setColorBrush={setColorBrush}
-                setEraseMode={setEraseMode}
-                setEraseWidth={setEraseWidth}
-                setStrokeWidth={setStrokeWidth}
-            />
+            
             <DrawOnImage 
                 imageUrl={imageUrl} 
                 strokeColor={colorBrush}
@@ -25,6 +20,12 @@ export function ImageDrawing({ imageUrl, setCroppedImageFor, onCancel })
                 eraseWidth={eraseWidth}
                 setCroppedImageFor={ setCroppedImageFor }
                 onCancel={onCancel}
+            />
+            <ImageDrawOptions 
+                setColorBrush={setColorBrush}
+                setEraseMode={setEraseMode}
+                setEraseWidth={setEraseWidth}
+                setStrokeWidth={setStrokeWidth}
             />
         </div>
     )
