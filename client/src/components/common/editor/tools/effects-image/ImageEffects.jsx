@@ -1,14 +1,24 @@
+import React, { useEffect, useState } from 'react';
 import { ImageContainer } from "image-effects-react"
 import { ImageHolder } from "../../canvas/ImageHolder"
+import { ReactSketchCanvas } from 'react-sketch-canvas'
 import { getFilteredImg } from "./filterImage";
 import axios from 'axios';
-import { useState } from "react";
+// import { useState } from "react";
 // import { response } from "express";
 
 let api_key ="oaRw1waFrdfLqx64HCHDWinnw2u2";
 
 export function ImageEffects({ imageUrl, filter, setCroppedImageFor, onCancel }) {
     const [resultImg, setResultImg] = useState();
+
+    const canvasRef = React.createRef();
+
+    async function handleSaveImage()
+    {
+        let imageNewUrl = await canvasRef.current.exportImage('png');
+        setCroppedImageFor(imageNewUrl);
+    }
 
    
 
@@ -68,7 +78,10 @@ export function ImageEffects({ imageUrl, filter, setCroppedImageFor, onCancel })
             
             <div className="mr-35 controls text-white">
                 <button className="p-5 border-solid border-2 border-slate-400 mr-5" 
-                onClick={e => onSaveImageEffect(filter)}>Apply</button>
+               onClick={() => {
+                handleSaveImage();
+            }}
+               >Apply</button>
                 <button
                     onClick={() => {
                         onCancel();

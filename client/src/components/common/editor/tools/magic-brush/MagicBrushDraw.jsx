@@ -316,7 +316,7 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
 
 
 
-        // ctx.filter = "contrast(110%) brightness(110%) grayscale(100%)"
+        // ctx.filter = "sepia(100%)"
         
         // let imgtmp = p5.createImg(imageUrl);
         // imgtmp.hide();

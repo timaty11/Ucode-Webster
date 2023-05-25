@@ -12,6 +12,7 @@ import { MagicBrush } from "./tools/magic-brush/MagicBrush";
 import { AdvancedDrawing } from "./tools/advanced-drawing/AdvancedDrawing";
 import { TextOnImage } from "./tools/text-markup/TextOnImage";
 import { RemoveBackground } from "./tools/remove-bg/RemoveBackground";
+import { ImageSetting } from "./tools/setting-image/ImageSetting";
 import { TextOptions } from "./tools/text-p5/TextOptions";
 import { TextContainer } from "./tools/text-markup/TextContainer";
 import { Scratch } from "./tools/scratch-effect/Scratch";
@@ -122,6 +123,14 @@ export function Editor() {
                         onCancel={onCancel}
                         setCroppedImageFor={setCroppedImageFor}
                         resetImage={resetImage}
+                    />
+                    : null}
+
+                {option === 2 && file ?
+                    <ImageSetting
+                    imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                    setCroppedImageFor={setEditedImageFor}
+                    onCancel={onCancel}
                     />
                     : null}
 
