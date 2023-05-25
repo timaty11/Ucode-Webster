@@ -10,6 +10,8 @@ let api_key ="oaRw1waFrdfLqx64HCHDWinnw2u2";
 export function ImageEffects({ imageUrl, filter, setCroppedImageFor, onCancel }) {
     const [resultImg, setResultImg] = useState();
 
+   
+
     const onSaveImageEffect = async (filter) => {
         axios.get('https://studio.pixelixe.com/api/photo/effect/v2', {
             params: {
@@ -30,24 +32,41 @@ export function ImageEffects({ imageUrl, filter, setCroppedImageFor, onCancel })
         })
         // const filteredImageUrl = await getFilteredImg(imageUrl, filter);
         // setCroppedImageFor(filteredImageUrl);
+         let ctx;
+    
+    // ctx.filter = "contrast(110%) brightness(110%) grayscale(100%)"
+    
+    // let imgtmp = p5.createImg(imageUrl);
+    // imgtmp.hide();
+    // ctx.drawImage(imgtmp.elt, 0, 0);
+    function bubod(film){
+        ctx.filter = film
+    
+        let imgtmp = p5.createImg(imageUrl);
+        imgtmp.hide();
+        ctx.drawImage(imgtmp.elt, 0, 0);
+    }
+    
     }
 
     return (
 
-        <div className="w-full flex items-center text-center justify-center">
-            <div className="mt-20 ml-20">
+        <div className="w-full grid grid-rows-[50%_50%]  items-center text-center justify-center">
+            <div className="ml-10 mt-60">
                 { filter !== null ? <ImageContainer
                         options={{
                             filter: filter.key,
                         }}
                         className="w-auto h-auto"
-                        style={{width: "70%", height: "auto"}}
+                        style={{width: "80%", height: "80%"}}
+                        
                     >
-                        <img src={imageUrl} alt="filter" className="w-auto h-auto" style={{width: "auto", height: "auto"}} />
-                    </ImageContainer> : <ImageHolder fileDataUrl={imageUrl} /> }
+                        {/* bubod(filter.key) */}
+                        <img src={imageUrl} alt="filter" className="w-auto h-auto" style={{width: "100%", height: "100%"}} />
+                    </ImageContainer> : <img src={imageUrl} alt="filter" className="w-auto h-auto" style={{width: "100%", height: "100%"}} /> }
             </div>
             
-            <div className="mr-30 controls text-white">
+            <div className="mr-35 controls text-white">
                 <button className="p-5 border-solid border-2 border-slate-400 mr-5" 
                 onClick={e => onSaveImageEffect(filter)}>Apply</button>
                 <button

@@ -126,7 +126,7 @@ export function Editor() {
                     : null}
 
                 {option === 3 && file ?
-                    <div className="w-full grid grid-cols-[23%_72%] gap-6 h-screen">
+                    <div className="w-full grid grid-cols-[23%_72%]  h-screen">
                         <ImageEffectsOptions setFilter={setFilter} />
                         <ImageEffects
                             imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
