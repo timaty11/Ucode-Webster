@@ -43,7 +43,12 @@ export function SidebarTools(props) {
                     <i className='bx bx-text' ></i>
                     {/* <p>Text</p> */}
                 </li>
-                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={download}>
+                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={() => handleOption(5)} id="scratch-brush-options">
+                    <i className='bx bx-star'></i>
+                </li>
+                <li className="flex gap-4 items-center p-5 cursor-pointer" id="save-button"
+                    // onClick={download}
+                >
                     <i className='bx bx-download'></i>
                     {/* <p>Download</p> */}
                 </li>

@@ -4,8 +4,6 @@ import { useRef, useEffect } from 'react';
 // import './text.css'
 
 export function TextOnImage({ imageUrl, fontFamily, colorText }) {
-  console.log("🚀 ~ file: TextOnImage.jsx:7 ~ TextOnImage ~ colorText:", colorText)
-  console.log("🚀 ~ file: TextOnImage.jsx:7 ~ TextOnImage ~ fontFamily:", fontFamily)
   const editor = useRef();
 
   useEffect(() => {
@@ -24,9 +22,7 @@ export function TextOnImage({ imageUrl, fontFamily, colorText }) {
      
         <button
           onClick={() => {
-            
             editor.current.set("text", textModeOptions);
-            console.log("🚀 ~ file: TextOnImage.jsx:24 ~ TextOnImage ~ text:", "text")
           }}
         >
           text
