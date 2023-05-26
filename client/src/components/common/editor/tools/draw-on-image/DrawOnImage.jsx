@@ -24,19 +24,6 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
         setCroppedImageFor(imageNewUrl);
     }
 
-    // const [tools, setTools] = useState('');
-
-    // const whatTools = async (tool) => {
-    //     localStorage.setItem(
-    //         "toool", tool);
-
-    //         setTools(tool);
-    // }
-
-    
-
-    //const background = "no-repeat url(" + imageUrl + ")";
-    //m-10 grid grid-cols-[90%_10%] gap-6
     return (
         <div className='grid grid-cols-[80%_20%]'>
             <div className='wl-20'>

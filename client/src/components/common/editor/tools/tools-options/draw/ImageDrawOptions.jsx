@@ -22,65 +22,10 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
         setEraseWidth(e.target.value);
     }
 
-    // let toool = localStorage.getItem("toool");
-    // let temp;
-    // let testValue = 'stASS\'ya';
-
-    // const [tools, setTools] = useState('');
-    // console.log(1, tools)
-    // testValue = tools;
-    // useEffect(()=>{
-    //     temp = toool;
-    // })
 
     return (
         <div >
-            
-            
-            
-            
-                        {/* <ColorPicker
-                color={color}
-                onChange={(color) => handleChangeColor(color)}
-                // theme={{
-                //     background: "lightgrey",
-                //     inputBackground: "grey",
-                //     borderColor: "darkgrey",
-                //     borderRadius: "8px",
-                //     color: "black",
-                //     width: "320px"
-                // }}
-                theme={themes.dark}
-            />
-            <div className="text-white m-10 text-xl text-center ">
-                        <label>Stroke width</label><br/>
-                        <input 
-                            className="text-black"
-                            type="range" min={1} max={200}
-                            onChange={(e) => handleChangeStrokeWidth(e)}
-                            defaultValue={currentStrokeWidth}
-                        ></input>
-                        <label> </label>
-                        <label>{currentStrokeWidth}</label></div>
-                    <div className="text-white m-10 text-xl text-center">
-                        <label>Eraser width</label><br/>
-                        <input 
-                            className="text-black"
-                            type="range" min={1} max={200}
-                            onChange={(e) => handleChangeEraserWidth(e)}
-                            defaultValue={currentEraseWidth}
-                        ></input>
-                        <label> </label>
-                        <label>{currentEraseWidth}</label>
-                    </div>
-                     */}
-
 {
-
-
-
-
-              
                 tool === "pencil" ? 
                 <div>
                     <ColorPicker
@@ -97,8 +42,8 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
                 theme={themes.dark}
             />
                 
-                <div className="text-white man">
-                <label>Stroke width {tool}</label><br/>
+                <div className="text-white text-2xl text-center">
+                <br/><label>Stroke width {tool}</label><br/>
                         <input 
                             className="text-black"
                             type="range" min={1} max={200}
@@ -112,8 +57,8 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
 
                 
             :
-            <div className="text-white manka">
-                <label>Eraser width {tool}</label><br/>
+            <div className="text-white text-2xl text-center">
+                <br/><label>Eraser width {tool}</label><br/>
                 <input 
                             className="text-black"
                             type="range" min={1} max={200}
