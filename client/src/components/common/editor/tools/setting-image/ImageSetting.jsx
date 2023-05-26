@@ -1,7 +1,9 @@
 import Sketch from "react-p5";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./setting.css"
 
+
+    
 export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
 {
     const [blur, setBlur] = useState("0");
@@ -28,8 +30,31 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
         let imageNewUrl = await canvasRef.current.exportImage('png');
         setCroppedImageFor(imageNewUrl);
     }
+    
+    // const canvas = document.querySelector("image");
+    // // const ctx = canvas.getContext("2d");
 
-    let ctx;
+    // if (canvas.getContext()){
+    //     var ctx = canvas.getContext('2d');
+    //     // drawing code here
+    //   } else {
+    //     // canvas-unsupported code here
+    //   }
+
+    //   let canvas;
+      let ctx;
+
+      const canvasRef = useRef(null);
+
+
+        useEffect(() => {
+            if(imageUrl){
+                const canvas =  document.querySelector("image");
+                ctx = canvas.getContext("2d");
+            }
+            
+        }, []);
+
     
     // const submit = p5 => {
     async function submit(){
@@ -52,7 +77,11 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
 
             <div className="ml-20 grid grid-cols-[65%_35%] ">
                 <div className="text-center flex  ml-10">
-                    <img src={imageUrl} alt="filter" id="image" className="w-auto h-auto" />
+                    <canvas id="image" >
+                        <img src={imageUrl} alt="filter"  className="w-auto h-auto" />
+                    </canvas>
+                    
+                    
                 </div>
                 <div className="text-white text-xl ">
                 <div className="text-white text-xl  ">

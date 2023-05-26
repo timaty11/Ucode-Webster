@@ -47,7 +47,7 @@ export const filters = [
     {key: "stinson", value: "contrast(75%) brightness(115%) saturate(85%)"},
     {key: "toaster", value: "contrast(150%) brightness(90%)"},
     {key: "valencia", value: "contrast(108%) brightness(108%) sepia(8%)"},
-    {key: "walden", value: "brightness(110%) hue-rotate(-10deg) sepia(30%) saturate(160%)"},                                  //
+    // {key: "walden", value: "brightness(110%) hue-rotate(-10deg) sepia(30%) saturate(160%)"},                                  //
     {key: "willow", value: "contrast(95%) brightness(90%) grayscale(50%)"},
     {key: "xpro", value: "sepia(30%)"}
 ];

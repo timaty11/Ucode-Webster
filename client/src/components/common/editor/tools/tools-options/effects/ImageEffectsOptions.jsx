@@ -18,7 +18,7 @@ export function ImageEffectsOptions(props) {
             scrollbar-thumb-slate-500 scrollbar-track-slate-700">
                 {
                     filters && filters.map((filter) => (
-                        <li className="" onClick={e => handleSetFilter(filter)} key={filters.indexOf(filter)}>
+                        <li id="filter" className="" onClick={e => handleSetFilter(filter)} key={filters.indexOf(filter)}>
                             <ImageContainer
                                 options={{
                                     filter: filter.key,
