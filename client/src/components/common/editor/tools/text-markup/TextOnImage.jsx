@@ -18,7 +18,7 @@ export function TextOnImage({ imageUrl, fontFamily, colorText }) {
     placeholder: "Type something"
   };
   return (
-    <div className='w-full items-center justify-center text-white'>
+    <div className='w-full h-full items-center justify-center text-white absolute'>
      
         <button
           onClick={() => {
@@ -41,7 +41,7 @@ export function TextOnImage({ imageUrl, fontFamily, colorText }) {
         >
           clear
         </button>
-        <Editor height="400" width="500" ref={editor}  />
+        <Editor height="auto" width="auto" ref={editor}  />
       
     </div>
   )

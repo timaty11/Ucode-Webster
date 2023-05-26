@@ -21,8 +21,8 @@ export function MagicBrushOptions({ setBrush }) {
                 <li className="w-14 hover:bg-slate-800 h-14" id="flareBrush">
                     <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\flare.png" alt="" />
                 </li>
-                <li className="w-14 hover:bg-slate-800 h-14" id="waterDropletsBrush">
-                    <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\water_droplets.png" alt="" />
+                <li className="w-14 hover:bg-slate-800 h-14" id="dandelionBrush">
+                    <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\dandelion.png" alt="" />
                 </li>
                 <li className="w-14 hover:bg-slate-800 h-14" id="cloudBrush">
                     <img src="src\\components\\common\\editor\\tools\\magic-brush\\assets\\cloud.png" alt="" />

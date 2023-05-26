@@ -162,7 +162,7 @@ export function Editor() {
                 }
                 {
                     option === 7 && file ?
-                        <TextContainer
+                        <TextContainer className="w-full"
                             imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
                         />
                         : null

@@ -35,7 +35,7 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
     return (
         <div className="grid grid-cols-[82%_18%] w-full">
             <MagicBrushDraw imageUrl={imageUrl} setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} />
-            {/* <Tabs>
+            <Tabs>
                 <TabList>
                     <Tab>
                         <i className='bx bxs-spray-can' ></i>
@@ -46,10 +46,10 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
                     <Tab>
                         H
                     </Tab>
-                </TabList> */}
+                </TabList>
 
 
-                {/* <TabPanel> */}
+                <TabPanel>
                     {/* {
                         setTimeout(() => {
                             <div> */}
@@ -59,17 +59,17 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
                         }, 1500)
                     } */}
                     <MagicBrushOptions setBrush={setBrushOption} />
-                {/* </TabPanel>
-                <TabPanel> */}
+                </TabPanel>
+                <TabPanel>
                     <AdvancedDrawOptions />
 
 
-                {/* </TabPanel>
-                <TabPanel> */}
+                </TabPanel>
+                <TabPanel>
                     <ScratchOptions />
                     <RemoveObjectFromImage/>
-                {/* </TabPanel>
-            </Tabs> */}
+                </TabPanel>
+            </Tabs>
         </div>
     )
 }

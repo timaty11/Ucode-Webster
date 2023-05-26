@@ -36,7 +36,7 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
     let inkBrushFlag = false;
     let InkIndex = 1;
     let font;
-    let water_droplets;
+    let  dandelion ;
     let cloud;
     let stamp;
     let topLayer;
@@ -56,13 +56,14 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
     let includeRemoveObject;
 
     const [resultImage, setResultImage] = useState();
+    const [loading, setLoading] = useState(false);
 
     const preload = (p5) => {
         starBlue = p5.loadImage(generalPath + "star.png");
         bubble = p5.loadImage(generalPath + "bubble.png");
         starDust = p5.loadImage(generalPath + "stardust.png");
         flare = p5.loadImage(generalPath + "flare.png");
-        water_droplets = p5.loadImage(generalPath + "water_droplets.png");
+         dandelion  = p5.loadImage(generalPath + "dandelion.png");
         cloud = p5.loadImage(generalPath + "cloud.png");
 
         starScratch = p5.loadImage(generalScratchPath + "starScratch.png");
@@ -75,8 +76,12 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
     }
     let ctx;
     let cnv;
+    let graphic;
+    let spinVal;
     const setup = (p5, canvasParentRef) => {
         cnv = p5.createCanvas(backgroundImage.width, backgroundImage.height).parent(canvasParentRef);
+        spinVal = 0;
+        // let cnv2 = p5.createCanvas(backgroundImage.width, backgroundImage.height).parent(canvasParentRef);;
         ctx = cnv.drawingContext;
         cnv.id('sketch');
 
@@ -91,8 +96,8 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         let flareButton = p5.select('#flareBrush');
         flareButton.mousePressed(changeBrushToFlare);
 
-        let waterDropButton = p5.select('#waterDropletsBrush');
-        waterDropButton.mousePressed(changeBrushToWaterDrop);
+        let  dandelionDropButton = p5.select('#dandelionBrush');
+         dandelionDropButton.mousePressed(changeBrushTodandelionDrop);
         let cloudButton = p5.select('#cloudBrush');
         cloudButton.mousePressed(changeBrushToCloud);
 
@@ -127,7 +132,7 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         let scratch = p5.select('#scratch-brush-options');
         scratch.mouseClicked(() => OpenCloseScratch(p5));
         let removeObjectButton = p5.select('#remove-object');
-        removeObjectButton.mouseClicked(OpenCloseRemoveObject);
+        removeObjectButton.mouseClicked(() => OpenCloseRemoveObject(p5));
         let removeApplyObject = p5.select('#apply-remove-object');
         removeApplyObject.mousePressed(() => ApplyRemoving(p5));
 
@@ -268,8 +273,8 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         imageBrush = bubble;
     }
 
-    function changeBrushToWaterDrop() {
-        imageBrush = water_droplets;
+    function changeBrushTodandelionDrop() {
+        imageBrush =  dandelion ;
     }
 
     function changeBrushToCloud() {
@@ -322,10 +327,10 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         // ctx.fillStyle = radGrad;
 
 
-        ctx.filter = 'contrast(1.4) sepia(1) drop-shadow(-9px 9px 3px #e81)';
-        let imgtmp = p5.createImg(imageUrl);
-        imgtmp.hide();
-        ctx.drawImage(imgtmp.elt, 0, 0);
+        // ctx.filter = 'contrast(1.4) sepia(1) drop-shadow(-9px 9px 3px #e81)';
+        // let imgtmp = p5.createImg(imageUrl);
+        // imgtmp.hide();
+        // ctx.drawImage(imgtmp.elt, 0, 0);
 
         if (p5.mouseIsPressed && imageBrush && imageBrushFlag) {
             p5.imageMode(p5.CENTER);
@@ -334,6 +339,8 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
             if (brushCounter == 0) {
                 let size = random(10, 50);
                 p5.tint(255, random(155, 255));
+                // p5.translate(p5.mouseX, p5.mouseY);
+                // p5.rotate(p5.PI / p5.random( (-30, 30)));
                 p5.image(imageBrush, p5.mouseX, p5.mouseY, size, size);
             }
         }
@@ -361,11 +368,17 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
             p5.strokeWeight(20);
             p5.stroke(0);
             p5.stroke(p5.color(255, 255, 255));
+
+            graphic.strokeWeight(20);
+            graphic.stroke(0);
+            graphic.stroke(p5.color(255, 255, 255));
             if (p5.mouseIsPressed) {
+                graphic.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
                 p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
             }
-            
         }
+
+
     }
 
     function OpenCloseAdvanced() {
@@ -383,7 +396,7 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         includeRemoveObject = false;
     }
 
-    function OpenCloseRemoveObject() {
+    function OpenCloseRemoveObject(p5) {
         let obj1 = document.getElementById('scratch-brushes');
         let obj2 = document.getElementById('advanced-brushes');
         let obj3 = document.getElementById('magic-brushes');
@@ -396,6 +409,13 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         inkBrushFlag = false;
         includeScratch = false;
         includeRemoveObject = true;
+
+        graphic = p5.createGraphics(backgroundImage.width, backgroundImage.height);
+        graphic.id("myGraphics");
+        graphic.background(220, 10);
+        p5.image(graphic, 0, 0);
+        // p5.clear();
+        // p5.background(backgroundImage);
     }
 
     function OpenCloseScratch(p5) {
@@ -411,12 +431,12 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         inkBrushFlag = false;
         includeScratch = true;
         includeRemoveObject = false;
-        topLayer = p5.createGraphics(p5.width, p5.height);
+        topLayer = p5.createGraphics(backgroundImage.width, backgroundImage.height);
 
         topLayer.background(200);
         topLayer.textSize(50);
         topLayer.textAlign(p5.CENTER);
-        topLayer.text("SCRATCH ME", p5.width / 2, p5.height / 2);
+        topLayer.text("SCRATCH ME", backgroundImage.width / 2, backgroundImage.height / 2);
 
         topLayer.imageMode(p5.CENTER);
         topLayer.strokeWeight(40);
@@ -438,47 +458,67 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         includeRemoveObject = false;
     }
 
-    function ApplyRemoving(p5) {
-        // p5.saveCanvas("./tmp/image", "png");
-        // bg = backgroundImage;
-        // backgroundImage = '';
-        // setTimeout(() => {
-        //     p5.saveCanvas("./tmp/image_mask", "png");
-        //     backgroundImage = bg;
-        // }, 1000);
+    function dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = window.atob(arr[arr.length - 1]),
+            n = bstr.length,
+            u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, { type: mime });
+    }
 
+    async function ApplyRemoving(p5) {
         const dataURL = document.querySelector("#sketch")
-            .toDataURL();
-        let bg = backgroundImage;
-        cnv.drawingContext.globalCompositeOperation = 'destination-over';
-        backgroundImage = 'black';
-        
+            .toDataURL("image/png");
+
+        graphic.drawingContext.globalCompositeOperation = 'destination-over';
+        graphic.background(p5.color(0, 0, 0));
+
+        p5.clear();
         p5.background(backgroundImage);
-        // p5.clear();
-        const dataMaskUrl = document.querySelector("#sketch")
-            .toDataURL();
-        console.log("🚀 ~ file: MagicBrushDraw.jsx:455 ~ ApplyRemoving ~ dataMaskUrl:", dataMaskUrl)
-        backgroundImage = bg;
-        p5.background(backgroundImage);
-        // .replace("image/png", "image/octet-stream");
+
+        const dataMaskUrl = document.querySelector("#myGraphics")
+            .toDataURL("image/png");
+
+        let image_file = dataURLtoFile(dataURL, "src\\components\\common\\editor\\tools\\magic-brush\\tmp\\image_file.png");
+        let mask_file = dataURLtoFile(dataMaskUrl, "src\\components\\common\\editor\\tools\\magic-brush\\tmp\\mask_file.png");
+        const formData = new FormData();
+        formData.append('sync', '1');
+
+
+        formData.append('image_file', image_file, image_file.name);
+        formData.append('mask_file', mask_file, mask_file.name);
+        formData.append('return_type', '2');
+
         axios({
             'method': 'POST',
             'url': 'https://techhk.aoscdn.com/api/tasks/visual/inpaint',
             'headers': {
                 'X-API-KEY': 'wx5hka2amkq6b3c4l'
             },
-            formData: {
-                'sync': '1',
-                'image_base64': dataURL,
-                'mask_base64': dataMaskUrl
-            }
+            data: formData
         }, function (error, response) {
             if (error) throw new Error(error);
             console.log(response.body);
-            setResultImage(response.data.image);
-        });
-        console.log("🚀 ~ file: MagicBrushDraw.jsx:448 ~ ApplyRemoving ~ dataURL:", dataURL)
+        }).then(res => {
+            console.log(res);
+            setResultImage("data:image/png;base64," + res.data.data.image);
 
+            let newBackgroundImage = "data:image/png;base64," + res.data.data.image;
+            backgroundImage = p5.loadImage(newBackgroundImage,
+                img => {
+                    p5.background(img);
+                });
+            
+            // p5.image(backgroundImage, 0, 0);
+            // p5.background(backgroundImage);
+            graphic.remove();
+        }).catch(err => {
+            console.log(err.message);
+        })
     }
 
     const mousePressed = (p5) => {
@@ -495,6 +535,21 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
 
     return (
         <div className="container w-full flex justify-center items-center">
+            {/* {
+                loading ?
+
+                    <div className="relative items-center block max-w-sm p-6 bg-white border border-gray-100 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-800 dark:hover:bg-gray-700">
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white opacity-20">Noteworthy technology acquisitions 2021</h5>
+                        <p className="font-normal text-gray-700 dark:text-gray-400 opacity-20">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <div role="status" className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2">
+                            <svg aria-hidden="true" className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" /><path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" /></svg>
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                :
+                <div>{resultImage ? <img src={resultImage}></img> : null}</div>
+            } */}
+
             <Sketch preload={preload} setup={setup} draw={draw} mousePressed={mousePressed} keyPressed={keyPressed} />
         </div>
     )
