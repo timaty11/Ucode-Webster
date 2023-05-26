@@ -2,14 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import { ReactSketchCanvas } from 'react-sketch-canvas'
 
-export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, setCroppedImageFor, onCancel }) {
+export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, setCroppedImageFor, onCancel, setTool }) {
     const styles = {
         border: '0.0625rem solid #9c9c9c',
         borderRadius: '0.25rem',
         // backgroundSize: "90% 100%",
     };
 
+
     const canvasRef = React.createRef();
+
+
+    function handleChangeTool(tools) {
+        console.log(tools)
+        setTool(tools);
+    }
     
     async function handleSaveImage()
     {
@@ -17,14 +24,14 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
         setCroppedImageFor(imageNewUrl);
     }
 
-    const [tools, setTools] = useState('');
+    // const [tools, setTools] = useState('');
 
-    const whatTools = async (tool) => {
-        localStorage.setItem(
-            "toool", tool);
+    // const whatTools = async (tool) => {
+    //     localStorage.setItem(
+    //         "toool", tool);
 
-            setTools(tool);
-    }
+    //         setTools(tool);
+    // }
 
     
 
@@ -56,7 +63,8 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 <button className='w-full'
                     onClick={() => {
                         canvasRef.current.eraseMode(false);
-                        whatTools("pencil");
+                        handleChangeTool("pencil") ;
+                    console.log("pencil");
                     }}
                 >
                     <i className='bx bxs-pencil'></i>
@@ -64,7 +72,9 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 <button className='w-full'
                     onClick={() => {
                         canvasRef.current.eraseMode(true);
-                        whatTools("sterka");
+                        handleChangeTool("sterka");
+                    console.log("sterka")
+                        
                     }}
                 >
                     <i className='bx bxs-eraser' ></i>
@@ -72,7 +82,6 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 <button className='w-full'
                     onClick={() => {
                         canvasRef.current.undo();
-                        // whatTools("nazad");
                     }}
                 >
                     <i className='bx bx-undo' ></i>
@@ -80,7 +89,6 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 <button className='w-full'
                     onClick={() => {
                         canvasRef.current.redo();
-                        // whatTools("vpered");
                     }}
                 >
                     <i className='bx bx-redo' ></i>
