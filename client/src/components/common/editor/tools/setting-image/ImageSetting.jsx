@@ -1,16 +1,27 @@
-
+import Sketch from "react-p5";
 import { useState } from "react";
+import "./setting.css"
 
 export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
 {
-    const [blur, setBlur] = useState("");
-    const [grayscale, setGrayscale] = useState();
-    const [invert, setInvert] = useState(1);
-    const [brightness, setBrightness] = useState(1);
-    const [sepia, setSepia] = useState();
-    const [contrast, setContrast] = useState(1);
-    const [saturate, setSaturate] = useState(1);
-    // const [huerotate, setHuerotate] = useState(1);
+    const [blur, setBlur] = useState("0");
+    const [grayscale, setGrayscale] = useState("0");
+    const [invert, setInvert] = useState("0");
+    const [brightness, setBrightness] = useState("100");
+    const [sepia, setSepia] = useState("0");
+    const [contrast, setContrast] = useState("100");
+    const [saturate, setSaturate] = useState("100");
+
+    async function reset(){
+        setBlur("0");
+        setGrayscale("0");
+        setInvert("0");
+        setBrightness("100");
+        setSepia("0");
+        setContrast("100");
+        setSaturate("100");
+    }
+    // const [huerotate, setHuerotate] = useState(1);s
 
     async function handleSaveImage()
     {
@@ -19,9 +30,14 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
     }
 
     let ctx;
-
+    
+    // const submit = p5 => {
     async function submit(){
-        ctx.filter = film
+        console.log(`blur(${blur}px) grayscale(${grayscale}%) invert(${invert*100}%) 
+        brightness(${brightness}%) sepia(${sepia}%) contrast(${contrast}%) saturate(${saturate}%)`);
+
+        ctx.filter = `blur(${blur}px) grayscale(${grayscale}%) invert(${invert*100}%) 
+        brightness(${brightness}%) sepia(${sepia}%) contrast(${contrast}%) saturate(${saturate}%)`
     
         let imgtmp = p5.createImg(imageUrl);
         imgtmp.hide();
@@ -32,101 +48,120 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
 
 //w-full grid grid-cols-[23%_72%] gap-6 h-screen
     return (
-        <div className=" grid grid-rows-[80%_20%] ">
+        <div className=" w-full grid grid-rows-[80%_20%] ">
 
-            <div className=" grid grid-cols-[70%_30%] ">
-                <div>
-                    <img src={imageUrl} alt="filter" className="w-auto h-auto" style={{width: "80%", height: "80%"}} />
+            <div className="ml-20 grid grid-cols-[65%_35%] ">
+                <div className="text-center flex  ml-10">
+                    <img src={imageUrl} alt="filter" id="image" className="w-auto h-auto" />
                 </div>
-                <div className="text-white text-xl text-center">
-                {/* <div className="text-white text-xl text-center "> */}
-                        <label>Blur</label><br/>
+                <div className="text-white text-xl ">
+                <div className="text-white text-xl  ">
+                        <label>Blur { blur}</label><br/>
+                        <label>0    </label>
+                        <label> </label>
                         <input 
                             className="text-black"
                             type="range" min={0} max={100}
-                            onChange={(e) => setBlur(e)}
+                            onChange={(e) => setBlur(e.target.value)}
+                            onClick={()=>{submit()}}
                             defaultValue="0"
                         ></input>
                         <label> </label>
-                        <label>{blur}</label>
-                        {/* </div>
-                    <div className="text-white m-10 text-xl text-center"> */}
-                        <br/><label>Grayscale</label><br/>
+                        <label>100</label>
+                        </div>
+                        
+                    <div className="text-white  text-xl ">
+                        <br/><label>Grayscale { grayscale}</label><br/>
+                        <label>0    </label>
+                        <label> </label>
                         <input 
                             className="text-black"
                             type="range" min={0} max={200}
-                            onChange={(e) => setGrayscale(e)}
+                            onChange={(e) => setGrayscale(e.target.value)}
                             defaultValue="0"
+                            onClick={()=>{submit()}}
                         ></input>
                         <label> </label>
-                        <label>{grayscale}</label>
-                    {/* </div>
-                    <div className="text-white m-10 text-xl text-center "> */}
-                        <br/><label>Invert</label><br/>
+                        <label>200</label>
+                    </div>
+
+                    <div className="text-white text-xl  ">
+                        <br/><label>Invert { invert*100}</label><br/>
+                        <label>0    </label>
+                        <label> </label>
                         <input 
                             className="text-black"
                             type="range" min={0} max={1}
-                            onChange={(e) => setInvert(e)}
+                            onChange={(e) => setInvert(e.target.value)}
                             defaultValue="0"
+                            onClick={()=>{submit()}}
                         ></input>
                         <label> </label>
-                        <label>{invert}</label>
-                        {/* </div>
-                    <div className="text-white m-10 text-xl text-center"> */}
-                        <br/><label>Brightness</label><br/>
+                        <label>100</label>
+                        </div>
+
+                    <div className="text-white text-xl ">
+                        <br/><label>Brightness { brightness}</label><br/>
+                        <label>0    </label>
+                        <label> </label>
                         <input 
                             className="text-black"
                             type="range" min={0} max={200}
-                            onChange={(e) => setBrightness(e)}
+                            onChange={(e) => setBrightness(e.target.value)}
                             defaultValue="100"
+                            onClick={()=>{submit()}}
                         ></input>
                         <label> </label>
-                        <label>{brightness}</label>
-                    {/* </div>
-                    <div className="text-white m-10 text-xl text-center "> */}
-                        <br/><label>Sepia</label><br/>
+                        <label>200</label>
+                    </div>
+
+                    <div className="text-white  text-xl  ">
+                        <br/><label>Sepia {sepia}</label><br/>
+                        <label>0    </label>
+                        <label> </label>
                         <input 
                             className="text-black"
                             type="range" min={0} max={100}
-                            onChange={(e) => setSepia(e)}
+                            onChange={(e) => setSepia(e.target.value)}
                             defaultValue="0"
+                            onClick={()=>{submit()}}
                         ></input>
                         <label> </label>
-                        <label>{sepia}</label>
-                        {/* </div>
-                    <div className="text-white m-10 text-xl text-center"> */}
-                        <br/><label>Contrast</label><br/>
+                        <label>100</label>
+                        </div>
+
+                    <div className="text-white  text-xl ">
+                        <br/><label>Contrast { contrast}</label><br/>
+                        <label>0    </label>
+                        <label> </label>
                         <input 
                             className="text-black"
                             type="range" min={0} max={200}
-                            onChange={(e) => setContrast(e)}
+                            onChange={(e) => setContrast(e.target.value)}
+                            onClick={()=>{submit()}}
                             defaultValue="100"
                         ></input>
                         <label> </label>
-                        <label>{contrast}</label>
-                    {/* </div>
-                    <div className="text-white m-10 text-xl text-center "> */}
-                        <br/><label>Saturate</label><br/>
+                        <label>200</label>
+                    </div>
+
+                    <div className="text-white  text-xl ">
+                        <br/><label>Saturate { saturate}</label><br/>
+                        <label>0    </label>
+                        <label> </label>
                         <input 
                             className="text-black"
                             type="range" min={0} max={200}
-                            onChange={(e) => setSaturate(e)}
+                            onChange={(e) => setSaturate(e.target.value)}
+                            onClick={()=>{submit()}}
                             defaultValue="100"
                         ></input>
                         <label> </label>
-                        <label>{saturate}</label>
-                        {/* </div> */}
+                        <label>200</label>
+                        </div>
                 </div>
             </div>
-            <div className="text-white text-xl grid grid-cols-[auto_auto_auto]">
-                <button className='w-full' title='Submit'
-                    onClick={() => {
-                        submit();
-                    }}
-                >
-                    <i className='bx bx-reset' ></i>
-                </button>
-
+            <div className="text-white text-xl grid grid-cols-[auto_auto]">
                 <button className='w-full' title='Save'
                     onClick={() => {
                         handleSaveImage();
@@ -134,15 +169,24 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                 >
                     <i className='bx bxs-save'></i>
                 </button>
+                <button className='w-full' title='Reset'
+                    onClick={() => {
+                        reset();
+                    }}
+                >
+                    <i className='bx bx-reset' ></i>
+                </button>
 
-                <button className='w-full' title='Cancel'
+                
+
+                {/* <button className='w-full' title='Cancel'
                     // onClick={() => {
                     //     canvasRef.current.clearCanvas();
                     //     onCancel();
                     // }}
                 >
                     <i className='bx bx-x-circle'></i>
-                </button>
+                </button> */}
             </div>
             
             {/* <SettingImage 

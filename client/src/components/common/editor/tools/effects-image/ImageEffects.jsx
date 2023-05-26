@@ -3,6 +3,7 @@ import { ImageContainer } from "image-effects-react"
 import { ImageHolder } from "../../canvas/ImageHolder"
 import { ReactSketchCanvas } from 'react-sketch-canvas'
 import { getFilteredImg } from "./filterImage";
+import "./imageEffect.css"
 import axios from 'axios';
 // import { useState } from "react";
 // import { response } from "express";
@@ -68,12 +69,12 @@ export function ImageEffects({ imageUrl, filter, setCroppedImageFor, onCancel })
                             filter: filter.key,
                         }}
                         className="w-auto h-auto"
-                        style={{width: "80%", height: "80%"}}
+                        style={{width: "100%", height: "100%"}}
                         
                     >
                         {/* bubod(filter.key) */}
-                        <img src={imageUrl} alt="filter" className="w-auto h-auto" style={{width: "100%", height: "100%"}} />
-                    </ImageContainer> : <img src={imageUrl} alt="filter" className="w-auto h-auto" style={{width: "100%", height: "100%"}} /> }
+                        <img id='image' src={imageUrl} alt="filter" className="w-auto h-auto" style={{width: "100%", height: "100%"}} />
+                    </ImageContainer> : <img id='image' src={imageUrl} alt="filter" className="w-auto h-auto" style={{width: "100%", height: "100%"}} /> }
             </div>
             
             <div className="mr-35 controls text-white">

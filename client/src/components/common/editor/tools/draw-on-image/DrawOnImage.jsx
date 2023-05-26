@@ -31,10 +31,11 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
     //const background = "no-repeat url(" + imageUrl + ")";
     //m-10 grid grid-cols-[90%_10%] gap-6
     return (
-        <div className='flex'>
-            <div>
+        <div className='grid grid-cols-[80%_20%]'>
+            <div className='wl-20'>
                 <ReactSketchCanvas
                     style={styles}
+                    id='image'
                     backgroundImage={imageUrl}
                     width={`600px`}
                     height={`500px`}
