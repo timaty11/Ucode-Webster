@@ -16,6 +16,7 @@ import { ImageSetting } from "./tools/setting-image/ImageSetting";
 import { TextOptions } from "./tools/text-p5/TextOptions";
 import { TextContainer } from "./tools/text-markup/TextContainer";
 import { Scratch } from "./tools/scratch-effect/Scratch";
+import { RemoveObjectFromImage } from "./tools/remove-object/RemoveObjectFromImage";
 
 export function Editor() {
     const [file, setFile] = useState(null);
@@ -170,8 +171,8 @@ export function Editor() {
                 }
                 {
                     option === 7 && file ?
-                        <TextContainer
-                        imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                        <TextContainer className="w-full"
+                            imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
                         />
                         : null
                 }
@@ -182,9 +183,17 @@ export function Editor() {
                 }
                 {
                     option === 9 && file ?
-                    <Scratch />
-                    :
-                    null
+                        <Scratch />
+                        :
+                        null
+                }
+                {
+                    option === 10 && file ?
+                        <RemoveObjectFromImage
+                            imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                        />
+                        :
+                        null
                 }
             </div>
         </div>

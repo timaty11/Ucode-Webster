@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRef } from 'react';
-import { ReactSketchCanvas } from 'react-sketch-canvas'
+import { ReactSketchCanvas } from 'react-sketch-canvas' 
 
 export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, setCroppedImageFor, onCancel, setTool }) {
     const styles = {

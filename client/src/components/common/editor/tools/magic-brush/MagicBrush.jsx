@@ -3,11 +3,15 @@ import { MagicBrushOptions } from "../tools-options/magic-brush/MagicBrushOption
 import { MagicBrushDraw } from "./MagicBrushDraw";
 import { brushes } from "../tools-options/magic-brush/brushes";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+// import 'react-tabs/style/react-tabs.css';
+import '../text-p5/tabs.css';
 
 import Sketch from "react-p5";
 import { AdvancedDrawOptions } from "../tools-options/advanced-draw/AdvancedDrawOptions";
 import { ScratchOptions } from "../scratch-effect/ScratchOptions";
+import { RemoveObjectFromImage } from "../remove-object/RemoveObjectFromImage";
+
+let time = 1.5;
 
 export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
     const [brush, setBrush] = useState(null);
@@ -30,8 +34,8 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
 
     return (
         <div className="grid grid-cols-[82%_18%] w-full">
-            <MagicBrushDraw  imageUrl={imageUrl} setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} />
-            {/* <Tabs>
+            <MagicBrushDraw imageUrl={imageUrl} setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} />
+            <Tabs>
                 <TabList>
                     <Tab>
                         <i className='bx bxs-spray-can' ></i>
@@ -39,18 +43,33 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
                     <Tab>
                         <i className='bx bxs-spray-can' ></i>
                     </Tab>
+                    <Tab>
+                        H
+                    </Tab>
                 </TabList>
 
 
-                <TabPanel> */}
+                <TabPanel>
+                    {/* {
+                        setTimeout(() => {
+                            <div> */}
+                                 {/* <MagicBrushOptions setBrush={setBrushOption} /> */}
+                                 
+                            {/* </div>
+                        }, 1500)
+                    } */}
                     <MagicBrushOptions setBrush={setBrushOption} />
-                {/* </TabPanel>
-                <TabPanel> */}
+                </TabPanel>
+                <TabPanel>
                     <AdvancedDrawOptions />
 
+
+                </TabPanel>
+                <TabPanel>
                     <ScratchOptions />
-                {/* </TabPanel>
-            </Tabs> */}
+                    <RemoveObjectFromImage/>
+                </TabPanel>
+            </Tabs>
         </div>
     )
 }

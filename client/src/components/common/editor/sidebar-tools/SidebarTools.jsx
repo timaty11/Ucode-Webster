@@ -46,15 +46,19 @@ export function SidebarTools(props) {
                 <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={() => handleOption(5)} id="scratch-brush-options">
                     <i className='bx bx-star'></i>
                 </li>
+                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={() => handleOption(8)} title="Remove background">
+                    <i className='bx bx-minus-back'></i>
+                </li>
+                <li className="flex gap-4 items-center p-5 cursor-pointer" id="remove-object" onClick={() => handleOption(5)}>
+                    <i className='bx bx-trim'></i>
+                </li>
                 <li className="flex gap-4 items-center p-5 cursor-pointer" id="save-button"
                     // onClick={download}
                 >
                     <i className='bx bx-download'></i>
                     {/* <p>Download</p> */}
                 </li>
-                <li className="flex gap-4 items-center p-5 cursor-pointer" onClick={() => handleOption(8)} title="Remove background">
-                    <i className='bx bx-minus-back'></i>
-                </li>
+                
             </ul>
         </div>
     )
