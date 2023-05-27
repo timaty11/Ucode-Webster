@@ -16,7 +16,7 @@ export function SidebarTools(props) {
                     <i className='bx bx-cut'></i>
                     {/* <p >Crop</p> */}
                 </li>
-                <li className="flex gap-4 items-center p-5 cursor-pointer"  onClick={e => handleOption(2)}>
+                <li className="flex gap-4 items-center p-5 cursor-pointer"  onClick={e => handleOption(5)} id="image-settings">
                     <i className='bx bxs-brightness-half'></i>
                     {/* <p>Brightness</p> */}
                 </li>

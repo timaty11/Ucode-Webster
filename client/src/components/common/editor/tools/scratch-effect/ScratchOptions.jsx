@@ -3,12 +3,11 @@ import 'react-tabs/style/react-tabs.css';
 import { ChooseGround } from './ChooseGround';
 import { ChooseStamp } from './ChooseStamp';
 
-export function ScratchOptions()
-{
+export function ScratchOptions() {
 
 
     return (
-        <div className='text-white' id='scratch-brushes'>
+        <div className='text-white grid grid-rows-2' id='scratch-brushes'>
             {/* <Tabs>
                 <TabList>
                     <Tab><i className='bx bx-minus-back'></i></Tab>
@@ -19,8 +18,9 @@ export function ScratchOptions()
                     <ChooseGround />
                 </TabPanel>
                 <TabPanel> */}
-                    <ChooseStamp />
-                {/* </TabPanel>
+            <ChooseGround />
+            <ChooseStamp />
+            {/* </TabPanel>
             </Tabs> */}
         </div>
     )

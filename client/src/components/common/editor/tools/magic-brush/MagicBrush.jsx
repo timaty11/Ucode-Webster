@@ -10,6 +10,7 @@ import Sketch from "react-p5";
 import { AdvancedDrawOptions } from "../tools-options/advanced-draw/AdvancedDrawOptions";
 import { ScratchOptions } from "../scratch-effect/ScratchOptions";
 import { RemoveObjectFromImage } from "../remove-object/RemoveObjectFromImage";
+import { ImageSetting } from "../setting-image/ImageSetting";
 
 let time = 1.5;
 
@@ -35,7 +36,7 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
     return (
         <div className="grid grid-cols-[82%_18%] w-full">
             <MagicBrushDraw imageUrl={imageUrl} setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} />
-            <Tabs>
+            {/* <Tabs>
                 <TabList>
                     <Tab>
                         <i className='bx bxs-spray-can' ></i>
@@ -49,7 +50,7 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
                 </TabList>
 
 
-                <TabPanel>
+                <TabPanel> */}
                     {/* {
                         setTimeout(() => {
                             <div> */}
@@ -59,17 +60,18 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
                         }, 1500)
                     } */}
                     <MagicBrushOptions setBrush={setBrushOption} />
-                </TabPanel>
-                <TabPanel>
+                {/* </TabPanel>
+                <TabPanel> */}
                     <AdvancedDrawOptions />
 
 
-                </TabPanel>
-                <TabPanel>
+                {/* </TabPanel>
+                <TabPanel> */}
                     <ScratchOptions />
                     <RemoveObjectFromImage/>
-                </TabPanel>
-            </Tabs>
+                    <ImageSetting />
+                {/* </TabPanel>
+            </Tabs> */}
         </div>
     )
 }
