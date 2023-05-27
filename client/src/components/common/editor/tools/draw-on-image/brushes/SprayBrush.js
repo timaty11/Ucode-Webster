@@ -1,10 +1,10 @@
-export function SprayBrush() {
+export function SprayBrush(p5) {
   // set the color and brush style
-  stroke(0, 0, 0, 255);
-  strokeWeight(1);
+  p5.stroke(0, 0, 0, 255);
+  p5.strokeWeight(1);
 
   // find the speed of the mouse movement
-  const speed = abs(mouseX - pmouseX) + abs(mouseY - pmouseY);
+  const speed = p5.abs(p5.mouseX - p5.pmouseX) + p5.abs(p5.mouseY - p5.pmouseY);
 
   // set minimum radius and spray density of spraypaint brush
   const minRadius = 10;
@@ -20,17 +20,21 @@ export function SprayBrush() {
   // repeat the random points with lerping
   for (let i = 0; i < lerps; i++) {
     // find the lerped X and Y coordinates
-    const lerpX = lerp(mouseX, pmouseX, i / lerps);
-    const lerpY = lerp(mouseY, pmouseY, i / lerps);
+    const lerpX = p5.lerp(p5.mouseX, p5.pmouseX, i / lerps);
+    const lerpY = p5.lerp(p5.mouseY, p5.pmouseY, i / lerps);
 
     // draw a bunch of random points within a circle
     for (let j = 0; j < sprayDensity; j++) {
       // pick a random position within the circle
-      const randX = random(-r, r);
-      const randY = random(-1, 1) * sqrt(rSquared - randX * randX);
+      const randX = p5.random(-r, r);
+      const randY = p5.random(-1, 1) * p5.sqrt(rSquared - randX * randX);
 
       // draw the random point
-      point(lerpX + randX, lerpY + randY);
+      if (p5.mouseIsPressed)
+      {
+        p5.point(lerpX + randX, lerpY + randY);
+      }
+      
     }
   }
 }

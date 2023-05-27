@@ -23,10 +23,12 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
     }
 
 
+
     return (
         <div >
 {
                 tool === "pencil" ? 
+
                 <div>
                     <ColorPicker
                 color={color}
@@ -68,8 +70,9 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
                         <label> </label>
                         <label>{currentEraseWidth}</label>
                 </div>
-            
+
             } 
             </div>
+
     )
 }

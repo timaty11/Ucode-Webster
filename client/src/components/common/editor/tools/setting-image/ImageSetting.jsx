@@ -2,8 +2,6 @@ import Sketch from "react-p5";
 import { useEffect, useState, useRef } from "react";
 import "./setting.css"
 
-
-    
 export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
 {
     const [blur, setBlur] = useState("0");
@@ -31,58 +29,46 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
         setCroppedImageFor(imageNewUrl);
     }
     
-    // const canvas = document.querySelector("image");
-    // // const ctx = canvas.getContext("2d");
-
-    // if (canvas.getContext()){
-    //     var ctx = canvas.getContext('2d');
-    //     // drawing code here
-    //   } else {
-    //     // canvas-unsupported code here
-    //   }
-
-    //   let canvas;
-      let ctx;
+    //   let ctx;
 
       const canvasRef = useRef(null);
 
 
         useEffect(() => {
-            if(imageUrl){
-                const canvas =  document.querySelector("image");
-                ctx = canvas.getContext("2d");
-            }
+            // if(imageUrl){
+            //     const canvas =  document.querySelector("image");
+            //     ctx = canvas.getContext("2d");
+            // }
             
         }, []);
 
     
     // const submit = p5 => {
     async function submit(){
-        console.log(`blur(${blur}px) grayscale(${grayscale}%) invert(${invert*100}%) 
-        brightness(${brightness}%) sepia(${sepia}%) contrast(${contrast}%) saturate(${saturate}%)`);
+        // console.log(`blur(${blur}px) grayscale(${grayscale}%) invert(${invert*100}%) 
+        // brightness(${brightness}%) sepia(${sepia}%) contrast(${contrast}%) saturate(${saturate}%)`);
 
-        ctx.filter = `blur(${blur}px) grayscale(${grayscale}%) invert(${invert*100}%) 
-        brightness(${brightness}%) sepia(${sepia}%) contrast(${contrast}%) saturate(${saturate}%)`
+        // ctx.filter = `blur(${blur}px) grayscale(${grayscale}%) invert(${invert*100}%) 
+        // brightness(${brightness}%) sepia(${sepia}%) contrast(${contrast}%) saturate(${saturate}%)`
     
-        let imgtmp = p5.createImg(imageUrl);
-        imgtmp.hide();
-        ctx.drawImage(imgtmp.elt, 0, 0);
+        // let imgtmp = p5.createImg(imageUrl);
+        // imgtmp.hide();
+        // ctx.drawImage(imgtmp.elt, 0, 0);
     }
 
 
 
 //w-full grid grid-cols-[23%_72%] gap-6 h-screen
+// grid grid-rows-[80%_20%]       grid grid-cols-[65%_35%]
     return (
-        <div className=" w-full grid grid-rows-[80%_20%] ">
+        <div className="w-full" id="image-setting">
 
-            <div className="ml-20 grid grid-cols-[65%_35%] ">
-                <div className="text-center flex  ml-10">
-                    <canvas id="image" >
+            <div className="w-full ml-10  bg-slate-900">
+                {/* <div className="text-center flex  ml-10"> */}
+                    {/* <canvas id="image" >
                         <img src={imageUrl} alt="filter"  className="w-auto h-auto" />
-                    </canvas>
-                    
-                    
-                </div>
+                    </canvas> */}     
+                {/* </div> */}
                 <div className="text-white text-xl ">
                 <div className="text-white text-xl  ">
                         <label>Blur { blur}</label><br/>
@@ -93,7 +79,9 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                             type="range" min={0} max={100}
                             onChange={(e) => setBlur(e.target.value)}
                             onClick={()=>{submit()}}
-                            defaultValue="0"
+                            // defaultValue="0"
+                            id="blur"
+                            value={blur}
                         ></input>
                         <label> </label>
                         <label>100</label>
@@ -107,8 +95,10 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                             className="text-black"
                             type="range" min={0} max={200}
                             onChange={(e) => setGrayscale(e.target.value)}
-                            defaultValue="0"
+                            // defaultValue="0"
                             onClick={()=>{submit()}}
+                            id="grayscale"
+                            value={grayscale}
                         ></input>
                         <label> </label>
                         <label>200</label>
@@ -122,8 +112,10 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                             className="text-black"
                             type="range" min={0} max={1}
                             onChange={(e) => setInvert(e.target.value)}
-                            defaultValue="0"
+                            // defaultValue="0"
                             onClick={()=>{submit()}}
+                            id="invert"
+                            value={invert}
                         ></input>
                         <label> </label>
                         <label>100</label>
@@ -137,8 +129,10 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                             className="text-black"
                             type="range" min={0} max={200}
                             onChange={(e) => setBrightness(e.target.value)}
-                            defaultValue="100"
+                            // defaultValue="100"
                             onClick={()=>{submit()}}
+                            id="brightness"
+                            value={brightness}
                         ></input>
                         <label> </label>
                         <label>200</label>
@@ -152,8 +146,10 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                             className="text-black"
                             type="range" min={0} max={100}
                             onChange={(e) => setSepia(e.target.value)}
-                            defaultValue="0"
+                            // defaultValue="0"
                             onClick={()=>{submit()}}
+                            id="sepia"
+                            value={sepia}
                         ></input>
                         <label> </label>
                         <label>100</label>
@@ -168,7 +164,9 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                             type="range" min={0} max={200}
                             onChange={(e) => setContrast(e.target.value)}
                             onClick={()=>{submit()}}
-                            defaultValue="100"
+                            // defaultValue="100"
+                            id="contrast"
+                            value={contrast}
                         ></input>
                         <label> </label>
                         <label>200</label>
@@ -183,7 +181,9 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                             type="range" min={0} max={200}
                             onChange={(e) => setSaturate(e.target.value)}
                             onClick={()=>{submit()}}
-                            defaultValue="100"
+                            // defaultValue="100"
+                            id="saturate"
+                            value={saturate}
                         ></input>
                         <label> </label>
                         <label>200</label>
@@ -192,9 +192,10 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
             </div>
             <div className="text-white text-xl grid grid-cols-[auto_auto]">
                 <button className='w-full' title='Save'
-                    onClick={() => {
-                        handleSaveImage();
-                    }}
+                    // onClick={() => {
+                    //     handleSaveImage();
+                    // }}
+                    id="image-settings-save-button"
                 >
                     <i className='bx bxs-save'></i>
                 </button>

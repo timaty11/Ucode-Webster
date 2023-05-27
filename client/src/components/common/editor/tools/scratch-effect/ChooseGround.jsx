@@ -3,7 +3,7 @@ export function ChooseGround() {
 
     return (
         <div className="text-white ">
-            <div className="mb-4 mt-4">
+            {/* <div className="mb-4 mt-4">
                 <h3 className="mb-4">
                     Choose foreground
                 </h3>
@@ -16,7 +16,7 @@ export function ChooseGround() {
                         <input type="checkbox" id="checkForeground"></input>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="mb-4 mt-12">
                 <h3 className="mb-4">
                     Choose background

@@ -15,6 +15,12 @@ export function AdvancedDrawOptions()
                 <li className="w-16 hover:bg-slate-800 h-16 m-4" id="balls-advanced">
                     <img src="src\\components\\common\\editor\\tools\\tools-options\\advanced-draw\\assets\\balls.png"></img>
                 </li>
+                <li className="w-16 hover:bg-slate-800 h-16 m-4" id="classic-ink">
+                    <img src="src\\components\\common\\editor\\tools\\tools-options\\advanced-draw\\assets\\classic_ink.png"></img>
+                </li>
+                <li className="w-16 hover:bg-slate-800 h-16 m-4" id="spray-ink">
+                    <img src="src\\components\\common\\editor\\tools\\tools-options\\advanced-draw\\assets\\spray_ink.png"></img>
+                </li>
             </ul>
         </div>
     )
