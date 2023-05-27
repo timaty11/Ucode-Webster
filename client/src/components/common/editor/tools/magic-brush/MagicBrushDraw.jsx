@@ -85,8 +85,16 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
     let graphic;
     let spinVal;
     const setup = (p5, canvasParentRef) => {
-        cnv = p5.createCanvas(backgroundImage.width < 1000 ? backgroundImage.width : backgroundImage.width / 2, 
-        backgroundImage.height < 800 ? backgroundImage.height : backgroundImage.height / 2).parent(canvasParentRef);
+        let scale;
+        if(backgroundImage.height > 650){
+            scale = backgroundImage.height / 650;
+            backgroundImage.height = 650;
+            backgroundImage.width = backgroundImage.width / scale;
+        }
+        // console.log("w: "+backgroundImage.width+"px", " h: "+backgroundImage.height+"px")
+
+
+        cnv = p5.createCanvas(backgroundImage.width, backgroundImage.height).parent(canvasParentRef); //w, h
         spinVal = 0;
         // let cnv2 = p5.createCanvas(backgroundImage.width, backgroundImage.height).parent(canvasParentRef);;
         ctx = cnv.drawingContext;
