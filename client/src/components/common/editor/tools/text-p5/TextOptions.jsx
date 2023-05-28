@@ -8,8 +8,8 @@ import { ColorText } from './ColorText';
 export function TextOptions({setFontFamily, setColorText}) {
 
     return (
-        <div className='text-white'>
-            <Tabs>
+        <div className='text-white' id='text-options'>
+            {/* <Tabs>
                 <TabList>
                     <Tab><i className='bx bxs-hot'></i></Tab>
                     <Tab><i className='bx bx-font-family'></i></Tab>
@@ -18,14 +18,15 @@ export function TextOptions({setFontFamily, setColorText}) {
 
                 <TabPanel>
                     <TextStyleOptions />
-                </TabPanel>
-                <TabPanel>
+                </TabPanel> 
+                <TabPanel> */}
+                <div id='color-pick-text'></div>
                     <FontOptions setFontFamily={setFontFamily} />
-                </TabPanel>
+                {/* </TabPanel>
                 <TabPanel>
                     <ColorText setColorText={setColorText} />
                 </TabPanel>
-            </Tabs>
+             </Tabs> */}
         </div>
     )
 }

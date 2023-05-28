@@ -9,7 +9,7 @@ import "./remove.css"
 // import { RemoveBgResult, RemoveBgError, removeBackgroundFromImageBase64 } from "remove.bg";
 // import { RemoveBgResult, RemoveBgError, removeBackgroundFromImageBase64 } from "remove.bg";
 
-export function RemoveBackground({ imageUrl }) {
+export function RemoveBackground({ imageUrl, setCroppedImageFor }) {
     const [isLoading, setIsLoading] = useState(false);
     const [resultImg, setResultImg] = useState();
     const [currentImageUrl, setCurrentImageUrl] = useState();
@@ -77,9 +77,8 @@ export function RemoveBackground({ imageUrl }) {
         // get the real base64 content of the file
         var realData = block[1].split(",")[1];// In this case "R0lGODlhPQBEAPeoAJosM...."
 
-        // Convert it to a blob to upload
         var blob = b64toBlob(realData, contentType);
-       
+
         const readerBlob = new FileReader();
         readerBlob.onloadend = () => setCurrentImageUrl(readerBlob.result)
         readerBlob.readAsDataURL(blob);
@@ -88,25 +87,23 @@ export function RemoveBackground({ imageUrl }) {
     function dataURLtoFile(dataurl, filename) {
         var arr = dataurl.split(','),
             mime = arr[0].match(/:(.*?);/)[1],
-            bstr = window.atob(arr[arr.length - 1]), 
-            n = bstr.length, 
+            bstr = window.atob(arr[arr.length - 1]),
+            n = bstr.length,
             u8arr = new Uint8Array(n);
-        while(n--){
+        while (n--) {
             u8arr[n] = bstr.charCodeAt(n);
         }
-        return new File([u8arr], filename, {type:mime});
+        return new File([u8arr], filename, { type: mime });
     }
-    
+
 
     async function RemoveBg() {
-        
-
         const formData = new FormData();
         formData.append('size', 'auto');
-        let inputPath = 'src\\components\\common\\editor\\tools\\remove-bg\\tmp\\imageTmp.png';
+        // let inputPath = 'src\\components\\common\\editor\\tools\\remove-bg\\tmp\\imageTmp.png';
         let file = dataURLtoFile(imageUrl, 'src\\components\\common\\editor\\tools\\remove-bg\\tmp\\imageTmp.png');
         formData.append('image_file', file, file.name);
-       
+
         await axios({
             method: 'post',
             url: 'https://api.remove.bg/v1.0/removebg',
@@ -122,7 +119,11 @@ export function RemoveBackground({ imageUrl }) {
                 if (response.status != 200) return console.error('Error:', response.status, response.statusText);
                 console.log(response.data)
                 const reader = new FileReader();
-                reader.onloadend = () => setResultImg(reader.result)
+                reader.onloadend = () => {
+                    console.log(reader.result);
+                    setResultImg(reader.result);
+                    // setCroppedImageFor(reader.result);
+                }
                 reader.readAsDataURL(response.data);
                 // setIsLoading(false);
             })
@@ -154,10 +155,15 @@ export function RemoveBackground({ imageUrl }) {
                     <img className="okeeeeeey" src={resultImg}></img>
                 </div>
             }
-            <div>
-                <img  className="okeeeeeey" src={currentImageUrl}></img>
-            </div>
-            <button className="jopa" onClick={RemoveBg} disabled={isLoading}>Apply</button>
+            {
+                !resultImg ?
+                    <div>
+                        <img src={currentImageUrl}></img>
+                    </div>
+                    : null
+            }
+
+            <button onClick={RemoveBg} disabled={isLoading}>Apply</button>
         </div>
     )
 }
