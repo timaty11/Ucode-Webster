@@ -30,9 +30,10 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
 
     //const background = "no-repeat url(" + imageUrl + ")";
     //m-10 grid grid-cols-[90%_10%] gap-6
+    //grid grid-cols-[80%_20%]
     return (
-        <div className='grid grid-cols-[80%_20%]'>
-            <div className='wl-20'>
+        <div className='flex'>
+            {/* <div className='wl-20'>
                 <ReactSketchCanvas
                     style={styles}
                     id='image'
@@ -48,22 +49,22 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                     ref={canvasRef}
 
                 />
-            </div>
+            </div> */}
 
             
 
-            <div className='text-white text-2xl columns-1 gap-y-2'>
-                <button className='w-full'
+            <div className='text-white text-2xl flex space-x-9'>
+                <button className='w-full' id='image-drawing-pencil'
                     onClick={() => {
-                        canvasRef.current.eraseMode(false);
+                        // canvasRef.current.eraseMode(false);
                         whatTools("pencil");
                     }}
                 >
                     <i className='bx bxs-pencil'></i>
                 </button>
-                <button className='w-full'
+                <button className='w-full' id='image-drawing-erase'
                     onClick={() => {
-                        canvasRef.current.eraseMode(true);
+                        // canvasRef.current.eraseMode(true);
                         whatTools("sterka");
                     }}
                 >
@@ -71,7 +72,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 </button>
                 <button className='w-full'
                     onClick={() => {
-                        canvasRef.current.undo();
+                        // canvasRef.current.undo();
                         // whatTools("nazad");
                     }}
                 >
@@ -79,7 +80,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 </button>
                 <button className='w-full'
                     onClick={() => {
-                        canvasRef.current.redo();
+                        // canvasRef.current.redo();
                         // whatTools("vpered");
                     }}
                 >
@@ -88,7 +89,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
 
                 <button className='w-full' title='Clear all'
                     onClick={() => {
-                        canvasRef.current.clearCanvas();
+                        // canvasRef.current.clearCanvas();
                         // whatTools("clear");
                     }}
                 >
@@ -103,22 +104,22 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                     <i className='bx bx-reset' ></i>
                 </button> */}
 
-                <button className='w-full' title='Save'
+                {/* <button className='w-full' title='Save'
                     onClick={() => {
                         handleSaveImage();
                     }}
                 >
                     <i className='bx bxs-save'></i>
-                </button>
+                </button> */}
 
-                <button className='w-full' title='Cancel'
+                {/* <button className='w-full' title='Cancel'
                     onClick={() => {
                         canvasRef.current.clearCanvas();
                         onCancel();
                     }}
                 >
                     <i className='bx bx-x-circle'></i>
-                </button>
+                </button> */}
             </div>
 
         </div>

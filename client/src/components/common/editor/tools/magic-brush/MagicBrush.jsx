@@ -11,12 +11,14 @@ import { AdvancedDrawOptions } from "../tools-options/advanced-draw/AdvancedDraw
 import { ScratchOptions } from "../scratch-effect/ScratchOptions";
 import { RemoveObjectFromImage } from "../remove-object/RemoveObjectFromImage";
 import { ImageSetting } from "../setting-image/ImageSetting";
+import { ImageDrawing } from "../draw-on-image/ImageDrawing";
 
 let time = 1.5;
 
 export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
     const [brush, setBrush] = useState(null);
     const [brushOption, setBrushOption] = useState(null);
+    const [colorBrush, setColorBrush] = useState("#fff");
     let backgroundImage;
     let starBlue;
     let bubble;
@@ -35,7 +37,7 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
 
     return (
         <div className="grid grid-cols-[82%_18%] w-full">
-            <MagicBrushDraw imageUrl={imageUrl} setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} />
+            <MagicBrushDraw imageUrl={imageUrl} setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} color={colorBrush}/>
             {/* <Tabs>
                 <TabList>
                     <Tab>
@@ -70,6 +72,7 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
                     <ScratchOptions />
                     <RemoveObjectFromImage/>
                     <ImageSetting />
+                    <ImageDrawing colorBrush={colorBrush} setColorBrush={setColorBrush} />
                 {/* </TabPanel>
             </Tabs> */}
         </div>

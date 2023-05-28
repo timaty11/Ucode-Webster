@@ -23,12 +23,14 @@ export function ChooseGround() {
                 </h3>
                 <div>
                     <div>
-                        <input type="file" id="file-input-scratch-back"></input>
+                    <div id="parent-color-picker-back"></div>
+                    <button id="apply-back-scratch">Apply</button>
+                        {/* <input type="file" id="file-input-scratch-back"></input> */}
                     </div>
-                    <div>
+                    {/* <div>
                         <label>Choose current </label>
                         <input type="checkbox" id="checkBackground"></input>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth 
 
     function handleChangeColor(color) {
         setColor(color.hex);
-        setColorBrush(color.hex);
+        setColorBrush(color.rgb);
     }
 
     function handleChangeStrokeWidth(e) {
@@ -27,15 +27,15 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth 
     let testValue = 'stASS\'ya';
 
     const [tools, setTools] = useState('');
-    console.log(1, tools)
+    // console.log(1, tools)
     testValue = tools;
     useEffect(() => {
         temp = toool;
     })
 
     return (
-        <div >
-            <ColorPicker
+        <div className="h-full mt-64">
+            {/* <ColorPicker
                 color={color}
                 onChange={(color) => handleChangeColor(color)}
                 // theme={{
@@ -47,20 +47,26 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth 
                 //     width: "320px"
                 // }}
                 theme={themes.dark}
-            />
-            <div className="text-white m-10 text-xl text-center ">
+                value={color}
+                nodeValue={color}
+                className="image-drawing-color-pick"
+            /> */}
+            <div id="parent-color-picker"></div>
+            <div className="text-white m-10 text-xl text-center">
                 <label>Stroke width</label><br />
                 <input
+                    id="image-drawing-stroke-width"
                     className="text-black"
                     type="range" min={1} max={200}
                     onChange={(e) => handleChangeStrokeWidth(e)}
-                    defaultValue={currentStrokeWidth}
+                    value={currentStrokeWidth}
                 ></input>
                 <label> </label>
                 <label>{currentStrokeWidth}</label></div>
             <div className="text-white m-10 text-xl text-center">
                 <label>Eraser width</label><br />
                 <input
+                    id="image-drawing-eraser-width"
                     className="text-black"
                     type="range" min={1} max={200}
                     onChange={(e) => handleChangeEraserWidth(e)}
