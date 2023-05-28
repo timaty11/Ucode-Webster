@@ -20,9 +20,9 @@ const Navbar = () => {
         {/* <NavbarElement name={t('navButtons.mainPage')} path={clientRoutes.mainPagePath()}/>
         <NavbarElement name={t('navButtons.about')} path={clientRoutes.aboutUsPagePath()}/>
         <NavbarElement name={t('navButtons.contact')} path={clientRoutes.contactInfoPagePath()}/> */}
-        <NavbarElement name={'cal'} path={clientRoutes.mainPagePath()}/>
-        <NavbarElement name={'sasi'} path={clientRoutes.aboutUsPagePath()}/>
-        <NavbarElement name={'zopy'} path={clientRoutes.contactInfoPagePath()}/>
+        <NavbarElement name={'Home'} path={clientRoutes.mainPagePath()}/>
+        <NavbarElement name={'About us'} path={clientRoutes.aboutUsPagePath()}/>
+        <NavbarElement name={'Contact info'} path={clientRoutes.contactInfoPagePath()}/>
       </ul>
     </div>
   );

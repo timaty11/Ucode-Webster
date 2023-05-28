@@ -17,7 +17,7 @@ const Logo = () => {
         </div>
       </div>
       <div>
-        <p href="/home" className="text-2xl no-underline text-grey-darkest hover:text-blue-dark font-sans font-bold dark:text-dark-text-400">Udown</p>
+        <p href="/home" className="text-2xl no-underline text-grey-darkest hover:text-blue-dark font-sans font-bold dark:text-dark-text-400">Webster</p>
       </div>
     </div>
   );

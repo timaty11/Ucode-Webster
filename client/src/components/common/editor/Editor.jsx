@@ -95,7 +95,7 @@ export function Editor() {
     }
 
     return (
-        <div className="w-full grid grid-cols-[5%_95%]">
+        <div className="w-full grid grid-cols-[3%_97%]">
             <div className="w-50px min-h-screen">
                 <SidebarTools setOption={setOption} download={Download_btn} />
             </div>
