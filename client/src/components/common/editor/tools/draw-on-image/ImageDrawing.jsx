@@ -12,7 +12,7 @@ export function ImageDrawing({ imageUrl, setCroppedImageFor, onCancel, colorBrus
     const [tool, setTool] = useState("");
 //w-full grid grid-cols-[23%_72%] gap-6 h-screen
     return (
-        <div className="w-full grid grid-cols-2" id="image-drawing">
+        <div className="w-full grid grid-rows-2" id="image-drawing">
             
             <DrawOnImage 
                 imageUrl={imageUrl} 

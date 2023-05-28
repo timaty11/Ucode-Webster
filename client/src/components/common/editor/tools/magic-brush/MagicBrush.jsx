@@ -36,7 +36,7 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
     //    }, [])
 
     return (
-        <div className="grid grid-cols-[82%_18%] w-full">
+        <div className="grid grid-cols-[80%_20%] w-full">
             <MagicBrushDraw imageUrl={imageUrl} setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} color={colorBrush}/>
             {/* <Tabs>
                 <TabList>

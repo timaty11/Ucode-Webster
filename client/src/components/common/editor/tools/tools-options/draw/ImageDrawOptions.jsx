@@ -24,15 +24,15 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
 
 
 
-    const [tools, setTools] = useState('');
-    // console.log(1, tools)
-    testValue = tools;
-    useEffect(() => {
-        temp = toool;
-    })
+    // const [tools, setTools] = useState('');
+    // // console.log(1, tools)
+    // testValue = tools;
+    // useEffect(() => {
+    //     temp = toool;
+    // })
 
     return (
-        <div className="h-full mt-64">
+        <div className="h-full ">
             {/* <ColorPicker
                 color={color}
                 onChange={(color) => handleChangeColor(color)}
@@ -49,10 +49,10 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
                 nodeValue={color}
                 className="image-drawing-color-pick"
             /> */}
-            {
-                tool === "pencil" ?
+            {/* { */}
+                {/* // tool === "pencil" ? */}
                     <div>
-                        <div id="parent-color-picker"></div>
+                        <div className="text-white m-10 text-xl text-center" id="parent-color-picker"></div>
                         <div className="text-white m-10 text-xl text-center">
                             <label>Stroke width</label><br />
                             <input
@@ -65,7 +65,7 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
                             <label> </label>
                             <label>{currentStrokeWidth}</label></div>
                     </div>
-                    :
+                    {/* : */}
                     <div className="text-white m-10 text-xl text-center">
                         <label>Eraser width</label><br />
                         <input
@@ -78,7 +78,7 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
                         <label> </label>
                         <label>{currentEraseWidth}</label>
                     </div>
-            }
+            {/* } */}
 
             {/* return ( */}
             {/* <div >
