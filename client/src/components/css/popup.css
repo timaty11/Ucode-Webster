@@ -1,0 +1,42 @@
+.popup {
+    z-index: 30;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(26, 24, 24, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.popup.active {
+    z-index: 30;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup__content {
+    z-index: 30;
+    font-size: 25px;
+    padding: 20px;
+    border-radius: 17px;
+    background-color: white;
+    transform: scale(0.5);
+    transition: 0.4s all;
+    width: 40%;
+}
+.popup__content > input {
+    border-style: solid;
+    border-color: black;
+    border-width: 10px;
+}
+
+.popup__content.active {
+    z-index: 30;
+    transform: scale(1);
+}

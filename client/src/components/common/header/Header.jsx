@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 
 import Logo from '../Logo.jsx';
 import Navbar from './Navbar.jsx';
-// import UserDropdownMenu from './UserDropdownMenu.jsx';
-// import LanguageSelectMenu from './LanguageSelectMenu.jsx';
+import UserDropdownMenu from './UserDropdownMenu.jsx';
+import LanguageSelectMenu from './LanguageSelectMenu.jsx';
 
-// import clientRoutes from '../../../routes/client/clientRoutes.js';
+import clientRoutes from '../../../routes/client/clientRoutes.js';
 import '../../css/header.css';
 
 
@@ -22,7 +22,7 @@ const Header = () => {
           
           <div className="flex lg:order-1 items-center justify-end w-[10%] ">
             {/* <LanguageSelectMenu /> */}
-            {/* <UserDropdownMenu /> */}
+            <UserDropdownMenu />
 
             <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-dark-text-400 dark:hover:bg-dark-bg-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
               <span className="sr-only">Open main menu</span>

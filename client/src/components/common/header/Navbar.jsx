@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 import NavbarElement from "./NavbarElement.jsx";
 
@@ -10,8 +10,8 @@ import UserContext from '../../../context/UserContext.js';
 const Navbar = () => {
   // const [ t, i18n ] = useTranslation('header');
 
-  // const { currentUser } = React.useContext(UserContext);
-  // const isOrganization = currentUser.role === 'organization';
+  const { currentUser } = React.useContext(UserContext);
+  const isOrganization = currentUser.role === 'organization';
 
   
   return (

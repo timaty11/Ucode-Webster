@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fragment } from 'react';
-// import { Menu, Transition } from '@headlessui/react';
+import { Menu, Transition } from '@headlessui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,12 +15,12 @@ import $api from '../../../../utils/api.js';
 
 
 export default () => {
-  const [t, i18n] = useTranslation(['header', 'auth']);
+  // const [t, i18n] = useTranslation(['header', 'auth']);
   const navigate = useNavigate();
 
   const { currentUser } = React.useContext(UserContext);
 
-  const fullName = `${t('userDropdownMenu.welcome', { ns: 'header' })} ${!localStorage.getItem('token') ? t('userDropdownMenu.unauthorizedUser', { ns: 'header' }) : (!currentUser?.name ? currentUser.login : currentUser.name)}`
+  const fullName = `Hi, ${!localStorage.getItem('token') ? "Guest" : (!currentUser?.name ? currentUser.login : currentUser.name)}`
   const logoutButtonHandle = async (e) => {
     e.preventDefault();
     try {
@@ -55,7 +55,7 @@ export default () => {
               localStorage.getItem('token') ? (
                 <button onClick={() => location.href = clientRoutes.profilePagePath()} className="group flex text-left relative h-10 w-full items-center overflow-hidden bg-white text-lg shadow dark:bg-dark-bg-800 dark:text-dark-text-400">
                   <div className="absolute inset-0 w-2 bg-blue-600 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                  <span className="px-7 relative text-black group-hover:text-white dark:text-dark-text-400">{ t('userDropdownMenu.profile', { ns: 'header' }) }</span>
+                  <span className="px-7 relative text-black group-hover:text-white dark:text-dark-text-400">{ "Profile" }</span>
                 </button>
               ) : (
                 <div className="flex">
@@ -63,12 +63,12 @@ export default () => {
 
                   <button onClick={() => location.href = clientRoutes.loginPagePath()} className="group flex text-left relative h-10 w-full items-center overflow-hidden bg-white text-lg shadow dark:bg-dark-bg-800 dark:text-dark-text-400">
                     <div className="absolute inset-0 w-2 bg-blue-600 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                    <span className="px-7 relative text-black group-hover:text-white dark:text-dark-text-400">{ t('common.signIn', { ns: 'auth' }) }</span>
+                    <span className="px-7 relative text-black group-hover:text-white dark:text-dark-text-400">{ "Sign in" }</span>
                   </button>
 
                   <button onClick={() => location.href = clientRoutes.registerPagePath()} className="group flex text-left relative h-10 w-full items-center overflow-hidden bg-white text-lg shadow dark:bg-dark-bg-800 dark:text-dark-text-400">
                     <div className="absolute inset-0 w-0 bg-blue-600 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                    <span className="px-7 relative text-black group-hover:text-white dark:text-dark-text-400">{ t('common.signUp', { ns: 'auth' }) }</span>
+                    <span className="px-7 relative text-black group-hover:text-white dark:text-dark-text-400">{ "Sign up" }</span>
                   </button>
                 </div>
               )
@@ -86,7 +86,7 @@ export default () => {
                 {({ active }) => (
                   <button className="group text-left relative h-10 w-56 overflow-hidden bg-white text-lg shadow dark:bg-dark-bg-800">
                     <div className="absolute inset-0 w-2 bg-blue-600 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                    <span className="px-7 relative text-black group-hover:text-white dark:text-dark-text-400">{ t('userDropdownMenu.logout', { ns: 'header' }) }</span>
+                    <span className="px-7 relative text-black group-hover:text-white dark:text-dark-text-400">Logout</span>
                   </button>
                 )}
               </Menu.Item>
