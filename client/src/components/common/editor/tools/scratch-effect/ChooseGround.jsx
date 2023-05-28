@@ -1,3 +1,4 @@
+import "./choose.css"
 export function ChooseGround() {
 
 
@@ -23,8 +24,8 @@ export function ChooseGround() {
                 </h3>
                 <div>
                     <div>
-                    <div id="parent-color-picker-back"></div>
-                    <button id="apply-back-scratch">Apply</button>
+                    <div className="lip" id="parent-color-picker-back"></div>
+                    <button className="nut" id="apply-back-scratch">Apply</button>
                         {/* <input type="file" id="file-input-scratch-back"></input> */}
                     </div>
                     {/* <div>

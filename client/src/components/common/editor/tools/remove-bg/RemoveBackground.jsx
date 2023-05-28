@@ -2,6 +2,7 @@ const API_KEY = 'gWnwqCkxv88Gw4V3wefCwBWH';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import FormData from 'form-data'
+import "./remove.css"
 // import fs from 'fs';
 // import { Buffer } from "buffer";
 // window.Buffer = window.Buffer || require("buffer").Buffer; 
@@ -150,13 +151,13 @@ export function RemoveBackground({ imageUrl }) {
 
                 :
                 <div>
-                    <img src={resultImg}></img>
+                    <img className="okeeeeeey" src={resultImg}></img>
                 </div>
             }
             <div>
-                <img src={currentImageUrl}></img>
+                <img  className="okeeeeeey" src={currentImageUrl}></img>
             </div>
-            <button onClick={RemoveBg} disabled={isLoading}>Apply</button>
+            <button className="jopa" onClick={RemoveBg} disabled={isLoading}>Apply</button>
         </div>
     )
 }
