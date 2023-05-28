@@ -1,0 +1,41 @@
+.aa{
+    /* background-color: rgb(46, 149, 149); */
+    height: 80px;
+    width: 80px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.aa:hover{
+    background-color: rgb(32, 83, 129);
+}
+
+.mm{
+    background-color: rgb(21, 55, 84);
+    /* padding-right: 15px; */
+    height: 550px;
+    border-radius: 20px;
+}
+
+.but{
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+.butam{
+    border-color: aliceblue;
+    border-width: 2px;
+    margin-left: 15px;
+    
+}
+
+.butam:hover{
+    background-color: aquamarine;
+    color: black;
+}
+
+.red:hover{
+    /* background-color: rgb(255, 127, 127); */
+    color: rgb(255, 127, 127);;
+}
