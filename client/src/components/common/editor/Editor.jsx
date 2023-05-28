@@ -135,7 +135,7 @@ export function Editor() {
                     />
                     : null}
 
-                {option === 3 && file ?
+                {/* {option === 3 && file ?
                     <div className="w-full grid grid-cols-[23%_72%]  h-screen">
                         <ImageEffectsOptions setFilter={setFilter} />
                         <ImageEffects
@@ -145,7 +145,7 @@ export function Editor() {
                             onCancel={onCancel}
                         />
                     </div>
-                    : null}
+                    : null} */}
                 {option === 4 && file ?
                     <ImageDrawing
                         imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
