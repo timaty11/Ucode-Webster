@@ -59,7 +59,6 @@ export function Editor() {
     const setEditedImageFor = (editedImageUrl) => {
         if (image) {
             image.croppedImageUrl = editedImageUrl;
-            console.log("🚀 ~ file: Editor.jsx:53 ~ setEditedImageFor ~ croppedImageUrl:", image.croppedImageUrl)
         }
         else {
             setImage({ croppedImageUrl: editedImageUrl });
@@ -178,7 +177,9 @@ export function Editor() {
                 }
                 {
                     option === 8 && file ?
-                        <RemoveBackground imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL} />
+                        <RemoveBackground imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL} 
+                            setCroppedImageFor={setCroppedImageFor}
+                        />
                         : null
                 }
                 {
@@ -191,6 +192,7 @@ export function Editor() {
                     option === 10 && file ?
                         <RemoveObjectFromImage
                             imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL}
+                            setCroppedImageFor={setCroppedImageFor}
                         />
                         :
                         null

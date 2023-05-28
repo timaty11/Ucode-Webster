@@ -77,7 +77,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 >
                     <i className='bx bxs-eraser' ></i>
                 </button>
-                <button className='w-full'
+                <button className='w-full' id='undo-draw'
                     onClick={() => {
                         // canvasRef.current.undo();
                         // whatTools("nazad");
@@ -85,7 +85,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
                 >
                     <i className='bx bx-undo' ></i>
                 </button>
-                <button className='w-full'
+                <button className='w-full' id='redo-draw'
                     onClick={() => {
                         // canvasRef.current.redo();
                         // whatTools("vpered");

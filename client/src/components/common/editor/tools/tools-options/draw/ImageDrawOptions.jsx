@@ -22,7 +22,9 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
         setEraseWidth(e.target.value);
     }
 
-
+let testValue;
+let toool;
+let temp;
 
     const [tools, setTools] = useState('');
     // console.log(1, tools)
@@ -33,24 +35,8 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
 
     return (
         <div className="h-full mt-64">
-            {/* <ColorPicker
-                color={color}
-                onChange={(color) => handleChangeColor(color)}
-                // theme={{
-                //     background: "lightgrey",
-                //     inputBackground: "grey",
-                //     borderColor: "darkgrey",
-                //     borderRadius: "8px",
-                //     color: "black",
-                //     width: "320px"
-                // }}
-                theme={themes.dark}
-                value={color}
-                nodeValue={color}
-                className="image-drawing-color-pick"
-            /> */}
-            {
-                tool === "pencil" ?
+            {/* {
+                tool === "pencil" ? */}
                     <div>
                         <div id="parent-color-picker"></div>
                         <div className="text-white m-10 text-xl text-center">
@@ -65,7 +51,7 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
                             <label> </label>
                             <label>{currentStrokeWidth}</label></div>
                     </div>
-                    :
+                    {/* : */}
                     <div className="text-white m-10 text-xl text-center">
                         <label>Eraser width</label><br />
                         <input
@@ -78,58 +64,7 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
                         <label> </label>
                         <label>{currentEraseWidth}</label>
                     </div>
-            }
-
-            {/* return ( */}
-            {/* <div >
-{
-                tool === "pencil" ? 
-
-
-                <div>
-                    <ColorPicker
-                color={color}
-                onChange={(color) => handleChangeColor(color)}
-                // theme={{
-                //     background: "lightgrey",
-                //     inputBackground: "grey",
-                //     borderColor: "darkgrey",
-                //     borderRadius: "8px",
-                //     color: "black",
-                //     width: "320px"
-                // }}
-                theme={themes.dark}
-            />
-                
-                <div className="text-white text-2xl text-center">
-                <br/><label>Stroke width {tool}</label><br/>
-                        <input 
-                            className="text-black"
-                            type="range" min={1} max={200}
-                            onChange={(e) => handleChangeStrokeWidth(e)}
-                            defaultValue={currentStrokeWidth}
-                        ></input>
-                        <label> </label>
-                        <label>{currentStrokeWidth}</label>
-            </div>
-                </div>
-
-                
-            :
-            <div className="text-white text-2xl text-center">
-                <br/><label>Eraser width {tool}</label><br/>
-                <input 
-                            className="text-black"
-                            type="range" min={1} max={200}
-                            onChange={(e) => handleChangeEraserWidth(e)}
-                            defaultValue={currentEraseWidth}
-                        ></input>
-                        <label> </label>
-                        <label>{currentEraseWidth}</label>
-                </div>
-
-            } 
-            </div> */}
+            {/* } */}
         </div>
 
     )

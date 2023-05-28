@@ -12,6 +12,7 @@ import { ScratchOptions } from "../scratch-effect/ScratchOptions";
 import { RemoveObjectFromImage } from "../remove-object/RemoveObjectFromImage";
 import { ImageSetting } from "../setting-image/ImageSetting";
 import { ImageDrawing } from "../draw-on-image/ImageDrawing";
+import { TextOptions } from "../text-p5/TextOptions";
 
 let time = 1.5;
 
@@ -36,7 +37,7 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
     //    }, [])
 
     return (
-        <div className="grid grid-cols-[82%_18%] w-full">
+        <div className="grid grid-cols-[80%_20%] w-full">
             <MagicBrushDraw imageUrl={imageUrl} setCroppedImageFor={setCroppedImageFor} onCancel={onCancel} color={colorBrush}/>
             {/* <Tabs>
                 <TabList>
@@ -73,6 +74,7 @@ export function MagicBrush({ imageUrl, setCroppedImageFor, onCancel }) {
                     <RemoveObjectFromImage/>
                     <ImageSetting />
                     <ImageDrawing colorBrush={colorBrush} setColorBrush={setColorBrush} />
+                    <TextOptions />
                 {/* </TabPanel>
             </Tabs> */}
         </div>
