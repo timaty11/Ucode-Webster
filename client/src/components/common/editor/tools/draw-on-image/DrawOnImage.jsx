@@ -2,14 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import { ReactSketchCanvas } from 'react-sketch-canvas' 
 
-export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, setCroppedImageFor, onCancel }) {
+export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, setCroppedImageFor, onCancel, setTool }) {
     const styles = {
         border: '0.0625rem solid #9c9c9c',
         borderRadius: '0.25rem',
         // backgroundSize: "90% 100%",
     };
 
+
     const canvasRef = React.createRef();
+
+
+    function handleChangeTool(tools) {
+        console.log(tools)
+        setTool(tools);
+    }
     
     async function handleSaveImage()
     {

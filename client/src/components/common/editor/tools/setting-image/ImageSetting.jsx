@@ -63,7 +63,7 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
     return (
         <div className="w-full" id="image-setting">
 
-            <div className="w-full ml-10  bg-slate-900">
+            <div className="w-full mt-10 bg-slate-900">
                 {/* <div className="text-center flex  ml-10"> */}
                     {/* <canvas id="image" >
                         <img src={imageUrl} alt="filter"  className="w-auto h-auto" />
@@ -75,7 +75,7 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                         <label>0    </label>
                         <label> </label>
                         <input 
-                            className="text-black"
+                            className="text-black slider"
                             type="range" min={0} max={100}
                             onChange={(e) => setBlur(e.target.value)}
                             onClick={()=>{submit()}}
@@ -92,7 +92,7 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                         <label>0    </label>
                         <label> </label>
                         <input 
-                            className="text-black"
+                            className="text-black slider"
                             type="range" min={0} max={200}
                             onChange={(e) => setGrayscale(e.target.value)}
                             // defaultValue="0"
@@ -109,7 +109,7 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                         <label>0    </label>
                         <label> </label>
                         <input 
-                            className="text-black"
+                            className="text-black slider"
                             type="range" min={0} max={1}
                             onChange={(e) => setInvert(e.target.value)}
                             // defaultValue="0"
@@ -126,7 +126,7 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                         <label>0    </label>
                         <label> </label>
                         <input 
-                            className="text-black"
+                            className="text-black slider"
                             type="range" min={0} max={200}
                             onChange={(e) => setBrightness(e.target.value)}
                             // defaultValue="100"
@@ -143,7 +143,7 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                         <label>0    </label>
                         <label> </label>
                         <input 
-                            className="text-black"
+                            className="text-black slider"
                             type="range" min={0} max={100}
                             onChange={(e) => setSepia(e.target.value)}
                             // defaultValue="0"
@@ -160,7 +160,7 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                         <label>0    </label>
                         <label> </label>
                         <input 
-                            className="text-black"
+                            className="text-black slider"
                             type="range" min={0} max={200}
                             onChange={(e) => setContrast(e.target.value)}
                             onClick={()=>{submit()}}
@@ -177,7 +177,7 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                         <label>0    </label>
                         <label> </label>
                         <input 
-                            className="text-black"
+                            className="text-black slider"
                             type="range" min={0} max={200}
                             onChange={(e) => setSaturate(e.target.value)}
                             onClick={()=>{submit()}}
@@ -189,59 +189,26 @@ export function ImageSetting({ imageUrl, setCroppedImageFor, onCancel })
                         <label>200</label>
                         </div>
                 </div>
-            </div>
+            </div><br/>
             <div className="text-white text-xl grid grid-cols-[auto_auto]">
-                <button className='w-full' title='Save'
+                <button className="bu buam" title='Submit'
                     // onClick={() => {
                     //     handleSaveImage();
                     // }}
                     id="image-settings-save-button"
                 >
                     <i className='bx bxs-save'></i>
+                    {/* Submit */}
                 </button>
-                <button className='w-full' title='Reset'
+                <button className='className="bu burd"' title='Reset'
                     onClick={() => {
                         reset();
                     }}
                 >
                     <i className='bx bx-reset' ></i>
+                    {/* Reset */}
                 </button>
-
-                
-
-                {/* <button className='w-full' title='Cancel'
-                    // onClick={() => {
-                    //     canvasRef.current.clearCanvas();
-                    //     onCancel();
-                    // }}
-                >
-                    <i className='bx bx-x-circle'></i>
-                </button> */}
-            </div>
-            
-            {/* <SettingImage 
-                imageUrl={imageUrl}
-                blur={blur}
-                grayscale={grayscale}
-                invert={invert}
-                brightness={brightness}
-                sepia={sepia}
-                contrast={contrast}
-                saturate={saturate}
-                // huerotate={huerotate}
-                setCroppedImageFor={ setCroppedImageFor }
-                onCancel={onCancel}
-            />
-            <ImageSettingOptions 
-                setBlur={setBlur}
-                setGrayscale={setGrayscale}
-                setInvert={setInvert}
-                setBrightness={setBrightness}
-                setSepia={setSepia}
-                setContrast={setContrast}
-                setSaturate={setSaturate}
-                // setHuerotate={setHuerotate}
-            /> */}
+                </div>
         </div>
     )
 }
