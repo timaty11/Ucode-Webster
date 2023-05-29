@@ -12,7 +12,7 @@ import { ClassicBrush, mouseDragged, mousePressed } from "../draw-on-image/brush
 import { SprayBrush } from "../draw-on-image/brushes/SprayBrush";
 import { SimpleBrush, eraseBrush } from "../draw-on-image/brushes/SimpleBrush";
 import { useColor } from "react-pick-color";
-import { WriteText, keyTyped, mouseClicked, mouseReleased } from "../text-p5/Text";
+// import { WriteText, keyTyped, mouseReleased } from "../text-p5/Text";
 import { Undo } from "./Undo";
 
 
@@ -31,14 +31,10 @@ let generalScratchPath = 'src\\components\\common\\editor\\tools\\scratch-effect
 export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagImage, flagInk, color }) {
     let backgroundImage;
     let imageBrush;
-    let inkBrush;
-    let canvasWidth;
-    let canvasHeight;
     let starBlue;
     let bubble;
     let starDust;
     let flare;
-    var myCanvas;
     let imageBrushFlag = false;
     let inkBrushFlag = false;
     let InkIndex = 1;
@@ -61,6 +57,11 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
     let fontText = "Indie Flower";
     let graphicImageDraw;
     let edited = false;
+    let isMouseInsideText;
+    var flag = false;
+    var strT = "";
+    var x_pos = 40,
+        y_pos = 40;
 
     const [resultImage, setResultImage] = useState();
     const [loading, setLoading] = useState(false);
@@ -155,10 +156,30 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
             topLayer.blendMode(p5.REMOVE);
         });
 
-        let fonts = document.getElementById('font');
+        let fonts = document.getElementById('Satisfy');
+
         fonts.addEventListener('click', (e) => {
-            fontText = e.target.value;
-        })
+            fontText = fonts.id;
+        }, false)
+
+        let fonts2 = document.getElementById('Permanent Marker');
+
+        fonts2.addEventListener('click', (e) => {
+            fontText = fonts2.id;
+        }, false)
+
+        let fonts3 = document.getElementById('Alegreya Sans');
+
+        fonts3.addEventListener('click', (e) => {
+            fontText = fonts3.id;
+        }, false)
+
+        let fonts4 = document.getElementById('Orbitron');
+
+        fonts4.addEventListener('click', (e) => {
+            fontText = fonts4.id;
+        }, false)
+        
 
         let saveButton = p5.select('#save-button');
         saveButton.mousePressed(() => Save(p5));
@@ -204,6 +225,17 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         imageDrawingBrush.mousePressed(() => OpenCloseImageDrawing(p5));
         let textP5Button = p5.select('#text-p5');
         textP5Button.mousePressed(OpenCloseTextWrite);
+
+        isMouseInsideText = (message, messageX, messageY) => {
+            const messageWidth = p5.textWidth(message);
+            // const messageTop = messageY - p5.textAscent();
+            const messageTop = messageY - p5.textAscent();
+            const messageBottom = messageY + p5.textDescent();
+
+            return p5.mouseX > messageX && p5.mouseX < messageX + messageWidth &&
+                p5.mouseY > messageTop && p5.mouseY < messageBottom;
+            // return true;
+        }
     }
 
     function changeStarScratch() {
@@ -277,6 +309,7 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
     }
 
 
+
     let eraseMode = false;
     const draw = p5 => {
 
@@ -327,12 +360,14 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         }
 
         if (includeTextWriting) {
-            // p5.background(backgroundImage);
+            p5.background(backgroundImage);
             p5.fill(colorPickerText.color());
             p5.textFont(fontText);
             p5.textSize(64);
             p5.noStroke();
-
+            // console.log(p5.textWidth())
+            // console.log(p5.textAscent())
+            // console.log(p5.textDescent())
             WriteText(p5);
         }
 
@@ -688,22 +723,56 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         }
     }
 
-    function mouseReleaseFunc(p5) {
-        mouseReleased();
-        p5.textAscent("kuku");
-        if (edited) {
-            // undo.takeSnapshot(p5);
+    function mouseReleased() {
+        flag = !true;
+    }
+
+    // function mouseReleaseFunc(p5) {
+    //     mouseReleased();
+    //     // p5.textAscent();
+    //     if (edited) {
+    //         // undo.takeSnapshot(p5);
+    //     }
+
+    // }
+
+    function mouseClick() {
+
+    }
+
+    function WriteText(p5) {
+        if (p5.mouseIsPressed) {
+            if (flag) {
+                p5.text(strT, p5.mouseX, p5.mouseY);
+                x_pos = p5.mouseX;
+                y_pos = p5.mouseY;
+            }
+        } else {
+
+            p5.text(strT, x_pos, y_pos);
+        }
+    }
+
+    function mouseClicked(p5) {
+        // console.log("🚀 ~ file: Text.js:23 ~ mouseClicked ~ p5:", p5.textWidth())
+        if (includeTextWriting) {
+            if (isMouseInsideText(strT, x_pos, y_pos, p5) && !flag) {
+                flag = true;
+            }
         }
 
     }
 
-    function mouseClick()
-    {
-        
+    function keyTyped(p5) {
+        let symb = strT.slice(-1);
+        if (symb !== p5.key) {
+            strT += p5.key;
+        }
+        return false;
     }
 
     return (
-        <div className="container w-full flex justify-center items-center">
+        <div className="container w-full h-screen flex justify-center items-center">
             {/* {
                 loading ?
 
@@ -728,7 +797,7 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
                 mouseDragged={mouseDragged}
                 keyTyped={keyTyped}
                 mouseClicked={mouseClicked}
-                mouseReleased={mouseReleaseFunc}
+                mouseReleased={mouseReleased}
             />
         </div>
     )

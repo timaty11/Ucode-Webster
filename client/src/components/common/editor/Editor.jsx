@@ -99,7 +99,7 @@ export function Editor() {
             <div className="w-50px min-h-screen">
                 <SidebarTools setOption={setOption} download={Download_btn} />
             </div>
-            <div className="min-h-screen m-10 grid justify-items-center">
+            <div className="min-h-screen m-10 grid justify-items-center items-center text-center">
                 {!fileDataURL ?
                     <ChoosePhoto
                         setFile={setFile}

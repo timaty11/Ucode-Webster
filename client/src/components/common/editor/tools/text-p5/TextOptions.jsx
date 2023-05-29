@@ -5,10 +5,10 @@ import { TextStyleOptions } from './TextStyleOptions';
 import { FontOptions } from './FontsOptions';
 import { ColorText } from './ColorText';
 
-export function TextOptions({setFontFamily, setColorText}) {
+export function TextOptions({ setFontFamily, setColorText }) {
 
     return (
-        <div className='text-white' id='text-options'>
+        <div className='text-white grid grid-rows-2 text-center items-center ' id='text-options'>
             {/* <Tabs>
                 <TabList>
                     <Tab><i className='bx bxs-hot'></i></Tab>
@@ -20,9 +20,14 @@ export function TextOptions({setFontFamily, setColorText}) {
                     <TextStyleOptions />
                 </TabPanel> 
                 <TabPanel> */}
-                <div id='color-pick-text'></div>
-                    <FontOptions setFontFamily={setFontFamily} />
-                {/* </TabPanel>
+                
+            <div className='w-full mt-4 grid grid-cols-2'>
+                <p className='text-xl'>Color: </p>
+                <div className='mb-10' id='color-pick-text'></div>
+            </div>
+
+            <FontOptions setFontFamily={setFontFamily} />
+            {/* </TabPanel>
                 <TabPanel>
                     <ColorText setColorText={setColorText} />
                 </TabPanel>
