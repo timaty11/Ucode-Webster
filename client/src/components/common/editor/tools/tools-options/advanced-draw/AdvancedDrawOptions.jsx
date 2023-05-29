@@ -4,9 +4,9 @@ export function AdvancedDrawOptions()
 {
 
     return (
-        <div id="advanced-brushes">
+        <div id="advanced-brushes" className="mt-10 mr-6">
             <ul className="w-full mmm overflow-auto grid grid-cols-2 gap-4 scrollbar-thin
-                scrollbar-thumb-slate-500 scrollbar-track-slate-700 justify-center
+                scrollbar-thumb-slate-500 scrollbar-track-slate-700 justify-center justify-items-center
             ">
                 <li className="aaa" id="jap-ink-advanced">
                     <img className="bbb" src="src\\components\\common\\editor\\tools\\tools-options\\advanced-draw\\assets\\jap-ink.png"></img>

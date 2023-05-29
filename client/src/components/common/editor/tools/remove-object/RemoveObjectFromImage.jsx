@@ -46,7 +46,7 @@ export function RemoveObjectFromImage({ imageUrl }) {
     }
 
     return (
-        <div className="flex" id="remove-object-from-image">
+        <div className="flex mt-20" id="remove-object-from-image">
             {/* {resultImage ? <img src={resultImage}></img> : null}
              <ReactSketchCanvas
                     style={styles}

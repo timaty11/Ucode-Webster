@@ -95,11 +95,11 @@ export function Editor() {
     }
 
     return (
-        <div className="w-full grid grid-cols-[3%_97%]">
+        <div className="w-full grid grid-cols-[4%_96%]">
             <div className="w-50px min-h-screen">
                 <SidebarTools setOption={setOption} download={Download_btn} />
             </div>
-            <div className="min-h-screen m-10 grid justify-items-center items-center text-center">
+            <div className="min-h-screen mb-28 grid justify-items-center items-center text-center pb-28">
                 {!fileDataURL ?
                     <ChoosePhoto
                         setFile={setFile}
@@ -179,6 +179,7 @@ export function Editor() {
                     option === 8 && file ?
                         <RemoveBackground imageUrl={image && image.croppedImageUrl ? image.croppedImageUrl : fileDataURL} 
                             setCroppedImageFor={setCroppedImageFor}
+                            onCancel={onCancel}
                         />
                         : null
                 }

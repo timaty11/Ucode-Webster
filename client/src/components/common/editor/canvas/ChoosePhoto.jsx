@@ -17,11 +17,12 @@ export function ChoosePhoto(props) {
         <div className="choose_image">
            
             <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'></link>
-            <div className="upload_img_box box-border h-72 w-72 p-4 border-2 border-dashed text-center">
+            <div className="upload_img_box box-border h-72 w-72 p-4 border-2 border-dashed text-center mr-14">
                 <i className='bx bx-upload text-3xl' style={{color:"#c8c8c8"}}></i>
                 <input 
+
                     type="file" 
-                    className="w-150 h-150"
+                    className="w-150 h-150 text-white"
                     name="selectedImage" 
                     id="selectedImage" 
                     accept="image/jpg, image/jpeg, image/png"

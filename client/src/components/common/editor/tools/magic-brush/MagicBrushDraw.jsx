@@ -360,7 +360,11 @@ export function MagicBrushDraw({ imageUrl, setCroppedImageFor, onCancel, flagIma
         }
 
         if (includeTextWriting) {
-            p5.background(backgroundImage);
+            if (flag)
+            {
+                p5.background(backgroundImage);
+            }
+            
             p5.fill(colorPickerText.color());
             p5.textFont(fontText);
             p5.textSize(64);

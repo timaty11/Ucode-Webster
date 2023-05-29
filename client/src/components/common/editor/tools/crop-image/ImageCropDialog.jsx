@@ -70,7 +70,7 @@ export function ImageCropDialog({ imageUrl, zoomInit, cropInit, aspectInit, onCa
                     onCropComplete={onCropComplete}
                 />
             </div>
-            <div className="controls fixed bottom-0 w-full">
+            <div className="controls fixed bottom-10 w-3/4">
                 <input
                     type="range"
                     min={1}

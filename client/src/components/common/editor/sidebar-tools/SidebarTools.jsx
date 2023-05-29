@@ -18,19 +18,16 @@ export function SidebarTools(props) {
             <ul style={{ color: "#c8c8c8" }} className="text-xl">
                 <SidebarButton icon='bx-cut' clickHandle={e => handleOption(1)}/>
                 <SidebarButton icon='bxs-brightness-half' clickHandle={e => handleOption(5)} id="image-settings"/>
-                <SidebarButton icon='bxs-color-fill' clickHandle={e => handleOption(3)}/>
+                {/* <SidebarButton icon='bxs-color-fill' clickHandle={e => handleOption(3)}/> */}
                 <SidebarButton icon='bxs-paint' clickHandle={e => handleOption(5)} id="image-drawing-options"/>
                 <SidebarButton icon='bxs-magic-wand' clickHandle={e => handleOption(5)} id="magic-brush-options"/>
                 <SidebarButton icon='bxs-palette' clickHandle={e => handleOption(5)} id="advanced-brush-options"/>
-                <SidebarButton icon='bx-text' clickHandle={e => handleOption(7)}/>
+                {/* <SidebarButton icon='bx-text' clickHandle={e => handleOption(7)}/> */}
                 <SidebarButton icon='bx-text' clickHandle={e => handleOption(5)} id="text-p5"/>
                 <SidebarButton icon='bx-star' clickHandle={e => handleOption(5)} id="scratch-brush-options"/>
                 <SidebarButton icon='bx-minus-back' clickHandle={e => handleOption(8)}/>
                 <SidebarButton icon='bx-trim' clickHandle={e => handleOption(5)} id="remove-object"/>
                 <SidebarButton icon='bx-download' clickHandle={e => handleOption(5)} id="save-button"/>
-
-                
-                
             </ul>
         </div>
     )

@@ -5,7 +5,7 @@ import "./mmmm.css"
 export function MagicBrushOptions({ setBrush }) {
 
     return (
-        <div className="h-screen p-8 w-full" id="magic-brushes">
+        <div className="h-screen p-8 w-full mt-8" id="magic-brushes">
             <ul className="mm w-full overflow-auto  grid grid-cols-2  scrollbar-thin
                 scrollbar-thumb-slate-500 scrollbar-track-slate-700 justify-center
             ">

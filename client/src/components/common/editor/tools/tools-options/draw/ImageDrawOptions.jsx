@@ -22,9 +22,9 @@ export function ImageDrawOptions({ setColorBrush, setStrokeWidth, setEraseWidth,
         setEraseWidth(e.target.value);
     }
 
-let testValue;
-let toool;
-let temp;
+    let testValue;
+    let toool;
+    let temp;
 
 
     const [tools, setTools] = useState('');
@@ -34,37 +34,41 @@ let temp;
         temp = toool;
     })
 
-    return (
-        <div className="h-full mt-64">
+    return ( //mt-64
+        <div className="h-full mt-24">
             {/* {
                 tool === "pencil" ? */}
-                    <div>
-                        <div className="text-white m-10 text-xl text-center" id="parent-color-picker"></div>
-                        <div className="text-white m-10 text-xl text-center">
-                            <label>Stroke width</label><br />
-                            <input
-                                id="image-drawing-stroke-width"
-                                className="text-black"
-                                type="range" min={1} max={200}
-                                onChange={(e) => handleChangeStrokeWidth(e)}
-                                value={currentStrokeWidth}
-                            ></input>
-                            <label> </label>
-                            <label>{currentStrokeWidth}</label></div>
-                    </div>
-                    {/* : */}
-                    <div className="text-white m-10 text-xl text-center">
-                        <label>Eraser width</label><br />
-                        <input
-                            id="image-drawing-eraser-width"
-                            className="text-black"
-                            type="range" min={1} max={200}
-                            onChange={(e) => handleChangeEraserWidth(e)}
-                            defaultValue={currentEraseWidth}
-                        ></input>
-                        <label> </label>
-                        <label>{currentEraseWidth}</label>
-                    </div>
+            <div>
+                <div className="inline-flex text-center items-center ml-8">
+                    <label className="text-white">Color: </label>
+                    <div className="text-white m-10 text-xl text-center" id="parent-color-picker"></div>
+                </div>
+
+                <div className="text-white m-10 text-xl text-center">
+                    <label>Stroke width</label><br />
+                    <input
+                        id="image-drawing-stroke-width"
+                        className="text-black w-full"
+                        type="range" min={1} max={200}
+                        onChange={(e) => handleChangeStrokeWidth(e)}
+                        value={currentStrokeWidth}
+                    ></input>
+                    {/* <label> </label> */}
+                    <label>{currentStrokeWidth}</label></div>
+            </div>
+            {/* : */}
+            <div className="text-white m-10 text-xl text-center">
+                <label>Eraser width</label><br />
+                <input
+                    id="image-drawing-eraser-width"
+                    className="text-black w-full"
+                    type="range" min={1} max={200}
+                    onChange={(e) => handleChangeEraserWidth(e)}
+                    defaultValue={currentEraseWidth}
+                ></input>
+                {/* <label> </label> */}
+                <label>{currentEraseWidth}</label>
+            </div>
             {/* } */}
         </div>
 

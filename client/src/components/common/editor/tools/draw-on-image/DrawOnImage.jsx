@@ -60,7 +60,7 @@ export function DrawOnImage({ imageUrl, strokeWidth, strokeColor, eraseWidth, se
 
             
 
-            <div className='text-white text-2xl flex space-x-9'>
+            <div className='text-white text-2xl flex space-x-8 ml-8'>
                 <button className='w-full' id='image-drawing-pencil'
                     onClick={() => {
                         // canvasRef.current.eraseMode(false);

@@ -8,7 +8,7 @@ import { ColorText } from './ColorText';
 export function TextOptions({ setFontFamily, setColorText }) {
 
     return (
-        <div className='text-white grid grid-rows-2 text-center items-center ' id='text-options'>
+        <div className='text-white grid grid-rows-2 text-center items-center mt-16' id='text-options'>
             {/* <Tabs>
                 <TabList>
                     <Tab><i className='bx bxs-hot'></i></Tab>
@@ -21,7 +21,7 @@ export function TextOptions({ setFontFamily, setColorText }) {
                 </TabPanel> 
                 <TabPanel> */}
                 
-            <div className='w-full mt-4 grid grid-cols-2'>
+            <div className=' mt-4 mr-7 grid grid-cols-2 border-b-2 dark:border-dark-bg-700'>
                 <p className='text-xl'>Color: </p>
                 <div className='mb-10' id='color-pick-text'></div>
             </div>
